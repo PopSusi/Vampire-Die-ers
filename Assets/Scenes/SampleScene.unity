@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &238906483 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6182563242874541416, guid: e472a11332740b14499c1f3f97de6659, type: 3}
+  m_PrefabInstance: {fileID: 6665962382587702812}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,12 +213,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 238906483}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1810347839
 GameObject:
@@ -268,7 +273,7 @@ MonoBehaviour:
   - {fileID: 2515065090325380720, guid: a20a66a87a25cf24ebb2116dde948a28, type: 3}
   - {fileID: 7905569277805348998, guid: 7912691f0d8469b4bbd5e19b9c768e9d, type: 3}
   size: {x: 10, y: 10, z: 0}
-  obsCountRange: {x: 4, y: 10}
+  myDens: 1
 --- !u!114 &1810347844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,7 +291,7 @@ MonoBehaviour:
   Enemies: []
   Obstacles: []
   size: {x: 0, y: 0, z: 0}
-  obsCountRange: {x: 0, y: 0}
+  myDens: 0
 --- !u!1001 &6665962382587702812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -341,13 +346,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6182563242874541416, guid: e472a11332740b14499c1f3f97de6659, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 519420032}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e472a11332740b14499c1f3f97de6659, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 519420032}
   - {fileID: 1810347842}
   - {fileID: 6665962382587702812}

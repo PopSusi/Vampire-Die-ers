@@ -5,6 +5,17 @@ using UnityEngine;
 
 public class Managers : MonoBehaviour
 {
+    public enum Density
+    {
+        High, Medium, Low
+    }
+
+    public Dictionary<Density, double> densMods = new Dictionary<Density, double>()
+    {
+        {Density.High, .6},
+        {Density.Medium, .3},
+        {Density.Low, .1},
+    };
     public enum LevelType
     {
         Desert,

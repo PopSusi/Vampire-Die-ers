@@ -13,7 +13,9 @@ public class LevelManager : Managers
     public GameObject[] Enemies;
     public GameObject[] Obstacles;
     public Vector3 size;
-    public Vector2 obsCountRange;
+
+    
+    public Density myDens;
     private void Start()
     {
         InitalizeVariables();
@@ -32,7 +34,8 @@ public class LevelManager : Managers
 
     public void SpawnObstacles()
     {
-        for (int i = 0; i < Random.Range(obsCountRange.x, obsCountRange.y); i++) //For between min and max obstacles
+        int obsCountRange = (int) (size.x * size.y * 2 * densMods[myDens]);
+        for (int i = 0; i < Random.Range(obsCountRange, obsCountRange); i++) //For between min and max obstacles
         {
             int j = Random.Range(0, Obstacles.Length); //Randomly choose Obstacles by Level
             Debug.Log($"{j} out of {Obstacles.Length -1}");
