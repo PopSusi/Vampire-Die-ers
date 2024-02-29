@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -13,6 +14,8 @@ public class LevelManager : Managers
     public GameObject[] Enemies;
     public GameObject[] Obstacles;
     public Vector3 size;
+    public NavMeshSurface surface;
+    
 
     
     public Density myDens;
@@ -20,6 +23,8 @@ public class LevelManager : Managers
     {
         InitalizeVariables();
     }
+    protected void BuildNavMesh() 
+    { surface.BuildNavMesh(); }
 
     public void SpawnEnemy()
     {
@@ -41,14 +46,13 @@ public class LevelManager : Managers
             Debug.Log($"{j} out of {Obstacles.Length -1}");
             Vector3 spawnObsPos = new Vector3(Random.Range(-size.x, size.x),Random.Range(-size.y, size.y), 0);
                     //Create spawn point in bounds of Negative and Positive size
-            Instantiate(Obstacles[j], spawnObsPos, Quaternion.identity); //Instantiate
+            GameObject obst = Instantiate(Obstacles[j], spawnObsPos, Quaternion.identity); //Instantiate
+            obst.tag = "Obstacles";
         }
     }
 
     public void InitalizeVariables()
     {
-        Debug.Log("ALIVE");
-        Debug.Log("ALIVE");
         playerObj = GameObject.FindGameObjectWithTag("Player");
         playerRef = playerObj.GetComponent<PlayerController>();
     }

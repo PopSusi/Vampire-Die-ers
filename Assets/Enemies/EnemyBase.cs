@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Animations;
 
 public class EnemyBase : Damageable
 {
     public GameObject playerObj; //Player Object in Scene, set by LevelManager - Singleton
     public PlayerController playerRef; //Player Script in Scene, set by LevelManager - Singleton
+    public NavMeshAgent agent;
     public EDamage myType = EDamage.Physical; //Default Type
     
     public Vector2 dirToPlayer;
@@ -18,9 +20,17 @@ public class EnemyBase : Damageable
     void Start()
     {        
         InitializeComponents();
+        agent = GetComponent<NavMeshAgent>();
         playerRef = playerObj.GetComponent<PlayerController>();
         Attack();
-        
+        StartCoroutine("Tracking");
+    }
+
+    IEnumerator Tracking()
+    {
+        agent.destination = playerObj.transform.position;
+        yield return new WaitForSeconds(2f);
+        StartCoroutine("Tracking");
     }
 
     void FixedUpdate()
