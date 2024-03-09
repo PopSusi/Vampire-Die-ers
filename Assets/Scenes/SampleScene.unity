@@ -341,6 +341,10 @@ PrefabInstance:
       propertyPath: playerObj
       value: 
       objectReference: {fileID: 6123046260817151239}
+    - target: {fileID: 3477388328893775908, guid: 0547a01bf9220b643bf1fc9cbe97b99b, type: 3}
+      propertyPath: closeEnough
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6316622526290719813, guid: 0547a01bf9220b643bf1fc9cbe97b99b, type: 3}
       propertyPath: m_Name
       value: Rotater
