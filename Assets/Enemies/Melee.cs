@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhysicalEnemy : EnemyBase
+public class Melee : EnemyBase
 {
     // Start is called before the first frame update
     void Start()
@@ -11,8 +11,7 @@ public class PhysicalEnemy : EnemyBase
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
     }
 }

@@ -8,9 +8,57 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2651302389969646791, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651302389969646791, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
+      propertyPath: rotator
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651302389969646791, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
+      propertyPath: avoidant
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651302389969646791, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
+      propertyPath: moveDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651302389969646791, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 6798077920432775670, guid: 195d57cc35611be44b295320289ef350, type: 3}
+    - target: {fileID: 2651302389969646791, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
+      propertyPath: attackDelay
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651302389969646791, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
+      propertyPath: closeEnough
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651302389969646791, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
+      propertyPath: closestToPlayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651302389969646791, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
+      propertyPath: projectileBased
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743539581769060658, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
+      propertyPath: speed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743539581769060658, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
+      propertyPath: moveDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743539581769060658, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
+      propertyPath: closestToPlayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4836968819707379878, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
       propertyPath: m_Name
-      value: Tsuki
+      value: Rotater
       objectReference: {fileID: 0}
     - target: {fileID: 6721970860528301688, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
       propertyPath: m_Controller
@@ -68,7 +116,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2707552553674063054, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

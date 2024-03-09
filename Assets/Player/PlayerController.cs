@@ -62,10 +62,10 @@ public class PlayerController : Damageable
     {
         gm.OnPause();
     }
-    public override void TakeDamage(float incomingDamage, EDamage type)
+    public override void TakeDamage(float incomingDamage)
     {
         HP -= incomingDamage;
-        switch (type)
+        /*switch (type)
         {
             case EDamage.Ranged:
                 spriteControls.color += Color.black;
@@ -77,8 +77,9 @@ public class PlayerController : Damageable
             default:
                 spriteControls.color += Color.red;
                 break;
-        }
+        }*/
         healthBar.SetHealth((int) HP);
+        Debug.Log(HP);
     }
 
     public void UpdateScore(int incoming)
@@ -86,4 +87,13 @@ public class PlayerController : Damageable
         scoreVal += incoming;
         scoreOut.text = "Score: " + scoreVal;
     }
+
+    /*private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Projectile"))
+        {
+            TakeDamage(other.gameObject.GetComponent<Projectiles>().damage);
+            Destroy(other.gameObject);
+        }
+    }*/
 }

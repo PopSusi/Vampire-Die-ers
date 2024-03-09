@@ -14,7 +14,6 @@ public class LevelManager : Managers
     public GameObject[] Enemies;
     public GameObject[] Obstacles;
     public Vector3 size;
-    public NavMeshSurface surface;
     
 
     
@@ -23,10 +22,8 @@ public class LevelManager : Managers
     {
         InitalizeVariables();
     }
-    protected void BuildNavMesh() 
-    { surface.BuildNavMesh(); }
 
-    public void SpawnEnemy()
+    protected void SpawnEnemy()
     {
         GameObject enemyToBeSpawned = Enemies[Random.Range(0, Enemies.Length-1)];
         float distance = Random.Range( 13, 25 );
@@ -37,7 +34,7 @@ public class LevelManager : Managers
         spawnedEnemy.GetComponent<EnemyBase>().playerObj = playerObj;
     }
 
-    public void SpawnObstacles()
+    protected void SpawnObstacles()
     {
         int obsCountRange = (int) (size.x * size.y * 2 * densMods[myDens]);
         for (int i = 0; i < Random.Range(obsCountRange, obsCountRange); i++) //For between min and max obstacles
@@ -51,7 +48,7 @@ public class LevelManager : Managers
         }
     }
 
-    public void InitalizeVariables()
+    protected void InitalizeVariables()
     {
         playerObj = GameObject.FindGameObjectWithTag("Player");
         playerRef = playerObj.GetComponent<PlayerController>();

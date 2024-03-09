@@ -11,7 +11,6 @@ public class Desert : LevelManager
         InitalizeVariables();
         StartCoroutine("Starting");
         SpawnObstacles();
-        BuildNavMesh();
     }
 
     // Update is called once per frame

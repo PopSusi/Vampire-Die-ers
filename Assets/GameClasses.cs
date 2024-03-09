@@ -40,10 +40,10 @@ public class Damageable : MonoBehaviour //Game Class for Enemies and Players
     public float HP = 100; //
     public bool dead;
 
-    public virtual void TakeDamage(float incomingDamage, EDamage type)
+    public virtual void TakeDamage(float incomingDamage)
     {
         HP -= incomingDamage;
-        switch (type)
+        /*switch (type)
         {
             case EDamage.Ranged:
                 spriteControls.color += Color.black;
@@ -55,6 +55,11 @@ public class Damageable : MonoBehaviour //Game Class for Enemies and Players
             default:
                 spriteControls.color += Color.red;
                 break;
+        }*/
+
+        if (HP <= 0)
+        {
+            Die();
         }
     }
 
@@ -63,5 +68,10 @@ public class Damageable : MonoBehaviour //Game Class for Enemies and Players
         spriteControls = GetComponent<SpriteRenderer>();
         animControls = GetComponent<Animator>();
         animControls.runtimeAnimatorController = myAnims;
+        animControls.SetFloat("HP", HP);
+    }
+    protected virtual void Die()
+    {
+        
     }
 }

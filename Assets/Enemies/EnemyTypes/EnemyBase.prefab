@@ -9,11 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7287410378531273155}
-  - component: {fileID: 4743539581769060658}
   - component: {fileID: 8117465261822443411}
   - component: {fileID: 6721970860528301688}
-  - component: {fileID: 2707552553674063054}
-  m_Layer: 0
+  - component: {fileID: 4472083531258364106}
+  - component: {fileID: 2651302389969646791}
+  - component: {fileID: 3563557276179700372}
+  m_Layer: 6
   m_Name: EnemyBase
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -35,32 +36,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4743539581769060658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4836968819707379878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ff4d88a79b1dfc469a050edef7ed91b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteControls: {fileID: 0}
-  animControls: {fileID: 0}
-  myAnims: {fileID: 0}
-  attackDelay: 5
-  speed: 5
-  HP: 50
-  dead: 0
-  playerObj: {fileID: 0}
-  playerRef: {fileID: 0}
-  myType: 0
-  dirToPlayer: {x: 0, y: 0}
-  distToPlayer: {x: 0, y: 0}
-  closestToPlayer: 10
-  attackWhileMoving: 0
 --- !u!212 &8117465261822443411
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -134,25 +109,108 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!195 &2707552553674063054
-NavMeshAgent:
+--- !u!61 &4472083531258364106
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4836968819707379878}
   m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.1
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 0.16
-  m_BaseOffset: 0.08
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.16, y: 0.16}
+  m_EdgeRadius: 0
+--- !u!114 &2651302389969646791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4836968819707379878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff4d88a79b1dfc469a050edef7ed91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteControls: {fileID: 0}
+  animControls: {fileID: 0}
+  myAnims: {fileID: 0}
+  attackDelay: 5
+  speed: 5
+  HP: 50
+  dead: 0
+  playerObj: {fileID: 0}
+  playerRef: {fileID: 0}
+  deathArea: {fileID: 0}
+  projectile: {fileID: 0}
+  projectileBased: 0
+  myType: 0
+  pollute: 0
+  moveDelay: 0
+  dirToPlayer: {x: 0, y: 0, z: 0}
+  dirToGoal: {x: 0, y: 0, z: 0}
+  closestToPlayer: 10
+  closeEnough: 0
+  moving: 0
+  avoidant: 0
+--- !u!50 &3563557276179700372
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4836968819707379878}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
