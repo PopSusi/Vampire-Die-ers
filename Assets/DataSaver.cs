@@ -5,6 +5,7 @@ using System.IO;
 using System.Net.Security;
 using System.Xml;
 using System.Xml.Serialization;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using static EnemyBase;
 
@@ -49,15 +50,18 @@ public class DataSaver : MonoBehaviour
             Directory.CreateDirectory(Path.GetDirectoryName(fileLocation));
             Console.WriteLine("The directory was created successfully at {0}.", Directory.GetCreationTime(fileLocation));
         }
-        FileStream fs = File.Create(fileLocation += att.name + "Xml.xml");
-        //XmlSerializer serializer = new XmlSerializer(typeof(Attributes));
-        XmlWriter xmlWriter = XmlWriter.Create(fs);
+        fileLocation += att.name + "Xml.xml";
+        XmlSerializer serializer = new XmlSerializer(typeof(Attributes));
+        /*XmlWriter xmlWriter = XmlWriter.Create(fs);
         xmlWriter.WriteStartDocument();
         xmlWriter.WriteStartElement(att.name);
         xmlWriter.WriteElementString("myAttributes",att.ToString());
         xmlWriter.WriteEndElement();
         xmlWriter.Close();
-        fs.Close();
+        fs.Close();*/
+        TextWriter writer = new StreamWriter(fileLocation);
+        serializer.Serialize(writer, att);
+        writer.Close();
 
     }
     public void JSONWrite(Attributes att)
