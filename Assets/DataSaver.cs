@@ -52,13 +52,6 @@ public class DataSaver : MonoBehaviour
         }
         fileLocation += att.name + "Xml.xml";
         XmlSerializer serializer = new XmlSerializer(typeof(Attributes));
-        /*XmlWriter xmlWriter = XmlWriter.Create(fs);
-        xmlWriter.WriteStartDocument();
-        xmlWriter.WriteStartElement(att.name);
-        xmlWriter.WriteElementString("myAttributes",att.ToString());
-        xmlWriter.WriteEndElement();
-        xmlWriter.Close();
-        fs.Close();*/
         TextWriter writer = new StreamWriter(fileLocation);
         serializer.Serialize(writer, att);
         writer.Close();
