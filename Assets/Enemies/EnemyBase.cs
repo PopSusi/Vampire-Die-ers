@@ -11,6 +11,9 @@ using UnityEngine.Animations;
 using UnityEngine.EventSystems;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
+using System.Xml;
+using System.IO;
+using System.Xml.Serialization;
 
 public class EnemyBase : Damageable
 {
@@ -34,15 +37,59 @@ public class EnemyBase : Damageable
     public bool avoidant;
     public bool rotator; //AVOIDANT AND ROTATOR MUST BE TRUE FOR ROTATION BEHAVIOUR
     private bool rotApproach = true;
-    void Start()
-    {        
-        InitializeComponents(); //Set Animator and Sprite
-        playerRef = playerObj.GetComponent<PlayerController>(); //Get Player Script
-        Attack(); //Start with Attack
-        StartCoroutine("UpdateDistance"); //Starts recursive check for Direction and Distance
-    }
+    public Attributes myAttributes;
+    public string name;
 
-    private void FixedUpdate()
+    [System.Serializable] public struct Attributes {
+        public bool projectileBased { get; set;}
+        public bool pollute { get; set; }
+        public bool avoidant { get; set; }
+        public bool rotator { get; set; }
+        public EDamage myType { get; set; }
+        public string name { get; set; }
+        /// <summary>
+        /// Creates Attributes for an enemy type
+        /// </summary>
+        /// <param name="proj">Projectile Based?</param>
+        /// <param name="poll">Polluting?</param>
+        /// <param name="avoid">Avoidant?</param>
+        /// <param name="rotate">Rotator?</param>
+        /// <param name="type">Damage Type from EDamage</param>
+        public Attributes(bool proj, bool poll, bool avoid, bool rotate, EDamage type, string newname)
+        {
+            projectileBased = proj;
+            pollute = poll;
+            avoidant = avoid;
+            rotator = rotate;
+            myType = type;
+            name = newname;
+        }
+        public override string ToString()
+        {
+            string outPut = "";
+            outPut += projectileBased.ToString() + ",\n";
+            outPut += pollute.ToString() + ",\n";
+            outPut += avoidant.ToString() + ",\n";
+            outPut += rotator.ToString() + ",\n";
+            outPut += myType.ToString();
+            return outPut;
+        }
+    }
+    
+    void Start()
+    {
+        myAttributes = new Attributes(projectileBased, pollute, avoidant, rotator, myType, name);
+        DataSaver.instance.enemies.Add(this);
+        //InitializeComponents(); //Set Animator and Sprite
+        //playerRef = playerObj.GetComponent<PlayerController>(); //Get Player Script
+        //Attack(); //Start with Attack
+        //StartCoroutine("UpdateDistance"); //Starts recursive check for Direction and Distance
+
+
+    }
+    
+
+    /*private void FixedUpdate()
     {
         CheckFlip();
         Move();
@@ -50,7 +97,7 @@ public class EnemyBase : Damageable
         {
             Attack();
         }
-    }
+    }*/
 
     IEnumerator UpdateDistance() //Recursive function to get values about finding player
     {
@@ -72,11 +119,11 @@ public class EnemyBase : Damageable
 
     private void MovementUpdate()
     {
-        if (avoidant) //WANTS TO MOVE FROM PLAYER
+        if (myAttributes.avoidant) //WANTS TO MOVE FROM PLAYER
         {
             if (closeEnough) 
             {
-                if (!rotator)
+                if (!myAttributes.rotator)
                 {
                     dirToGoal = (transform.position - playerObj.transform.position)
                         .normalized; //DIR FROM PLAYER - AVOID
@@ -123,7 +170,7 @@ public class EnemyBase : Damageable
         if (canAttack)
         {
             //Debug.Log("Attacking");
-            if (projectileBased)
+            if (myAttributes.projectileBased)
             {
                 animControls.Play("Attack"); //Play anim with HitBox
                 Shoot();
@@ -184,7 +231,7 @@ public class EnemyBase : Damageable
 
     protected override void Die()
     {
-        if (pollute)
+        if (myAttributes.pollute)
         {
             Instantiate(deathArea, this.transform.position, quaternion.identity);
         }
