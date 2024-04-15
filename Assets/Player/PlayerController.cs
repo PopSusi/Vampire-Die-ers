@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : Damageable
 {
     public GameManager gm;
+    public static PlayerController instance;
     
     public Healthbar healthBar;
     public Text scoreOut;
@@ -17,8 +18,24 @@ public class PlayerController : Damageable
     private InputActionAsset actions;
     public InputAction moveAction;
     private Vector2 moveAmount;
-    
+    private float xp;
+    [SerializeField] private float XP
+    {
+        get { return xp; }
+        set { xp = value; XPUpdate(); }
+    }
+
+    public delegate void XPUpdateEvent(int xp);
+    public event XPUpdateEvent XPUpdateUI;
+
     // Start is called before the first frame update
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
     void Start()
     {
         InitializeComponents();
@@ -88,12 +105,28 @@ public class PlayerController : Damageable
         scoreOut.text = "Score: " + scoreVal;
     }
 
-    /*private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.CompareTag("Projectile"))
         {
             TakeDamage(other.gameObject.GetComponent<Projectiles>().damage);
             Destroy(other.gameObject);
         }
-    }*/
+    }
+    public void SubscribeToEnemyDeath(EnemyBase enemy)
+    {
+        enemy.enemyDeath += XPFunc;
+    }
+    private void XPFunc()
+    {
+        xp += 10;
+    }
+    private void XPUpdate()
+    {
+        //XP Modulo for new tempLevel
+        //Update XP Bar
+        //if tempLevel > level
+            //level = tempLevel
+            //XPUpdateUI?.Invoke;
+    }
 }

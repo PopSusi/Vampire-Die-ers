@@ -38,15 +38,20 @@ public class EnemyBase : Damageable
     public bool rotator; //AVOIDANT AND ROTATOR MUST BE TRUE FOR ROTATION BEHAVIOUR
     private bool rotApproach = true;
     public Attributes myAttributes;
-    public string name;
+    public string myName;
+
+    public delegate void DeathEvent();
+    public event DeathEvent enemyDeath;
 
     [System.Serializable] public struct Attributes {
+
         public bool projectileBased { get; set;}
         public bool pollute { get; set; }
         public bool avoidant { get; set; }
         public bool rotator { get; set; }
         public EDamage myType { get; set; }
         public string name { get; set; }
+
         /// <summary>
         /// Creates Attributes for an enemy type
         /// </summary>
@@ -80,16 +85,15 @@ public class EnemyBase : Damageable
     {
         myAttributes = new Attributes(projectileBased, pollute, avoidant, rotator, myType, name);
         DataSaver.instance.enemies.Add(this);
-        //InitializeComponents(); //Set Animator and Sprite
-        //playerRef = playerObj.GetComponent<PlayerController>(); //Get Player Script
-        //Attack(); //Start with Attack
-        //StartCoroutine("UpdateDistance"); //Starts recursive check for Direction and Distance
-
-
+        InitializeComponents(); //Set Animator and Sprite
+        playerRef = playerObj.GetComponent<PlayerController>(); //Get Player Script
+        Attack(); //Start with Attack
+        StartCoroutine("UpdateDistance"); //Starts recursive check for Direction and Distance
+        PlayerController.instance.SubscribeToEnemyDeath(this);
     }
     
 
-    /*private void FixedUpdate()
+    private void FixedUpdate()
     {
         CheckFlip();
         Move();
@@ -97,7 +101,7 @@ public class EnemyBase : Damageable
         {
             Attack();
         }
-    }*/
+    }
 
     IEnumerator UpdateDistance() //Recursive function to get values about finding player
     {
