@@ -17,8 +17,8 @@ using System.Xml.Serialization;
 
 public class EnemyBase : Damageable
 {
-    public GameObject playerObj; //Player Object in Scene, set by LevelManager - Singleton
-    public PlayerController playerRef; //Player Script in Scene, set by LevelManager - Singleton
+    public GameObject playerObj; //Player Object in Scene - Singleton
+    public PlayerController playerRef; //Player Script in Scene - Singleton
     public GameObject deathArea; //Can be empty
     public GameObject projectile; //Can be empty
 
@@ -86,7 +86,8 @@ public class EnemyBase : Damageable
         myAttributes = new Attributes(projectileBased, pollute, avoidant, rotator, myType, name);
         DataSaver.instance.enemies.Add(this);
         InitializeComponents(); //Set Animator and Sprite
-        playerRef = playerObj.GetComponent<PlayerController>(); //Get Player Script
+        playerRef = PlayerController.instance; //Get Player Script
+        playerObj = PlayerController.instance.gameObject;
         Attack(); //Start with Attack
         StartCoroutine("UpdateDistance"); //Starts recursive check for Direction and Distance
         PlayerController.instance.SubscribeToEnemyDeath(this);
