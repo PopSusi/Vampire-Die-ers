@@ -17,7 +17,7 @@ public class XPBar : MonoBehaviour
     {
         
     }
-    private void updateXP(int xp)
+    private void updateXP(int xp, int level)
     {
 
     }

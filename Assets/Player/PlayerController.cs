@@ -18,14 +18,15 @@ public class PlayerController : Damageable
     private InputActionAsset actions;
     public InputAction moveAction;
     private Vector2 moveAmount;
-    private float xp;
-    [SerializeField] private float XP
+    private int xp;
+    private int level;
+    [SerializeField] private int XP
     {
         get { return xp; }
-        set { xp = value; XPUpdate(); }
+        set { xp = value; }
     }
 
-    public delegate void XPUpdateEvent(int xp);
+    public delegate void XPUpdateEvent(int xp, int level);
     public event XPUpdateEvent XPUpdateUI;
 
     // Start is called before the first frame update
@@ -119,14 +120,12 @@ public class PlayerController : Damageable
     }
     private void XPFunc()
     {
-        xp += 10;
-    }
-    private void XPUpdate()
-    {
-        //XP Modulo for new tempLevel
-        //Update XP Bar
-        //if tempLevel > level
-            //level = tempLevel
-            //XPUpdateUI?.Invoke;
+        XP += 100;
+        if(xp > (20 * level ^ 2))
+        {
+            level++;
+        }
+        XPUpdateUI?.Invoke(xp, level);
+        
     }
 }
