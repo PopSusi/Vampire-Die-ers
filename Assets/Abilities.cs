@@ -10,8 +10,13 @@ public class Abilities : MonoBehaviour
     public enum EAbility { Onion, Chain, Necronomicon};
     public EAbility ability = EAbility.Onion;
     public string description = " ";
+    protected LayerMask layerMask = 10;
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
     void Start()
     {
         if (intervalBetweenAttacks > 0) {
@@ -19,21 +24,26 @@ public class Abilities : MonoBehaviour
         }
         else
         {
-            Attack();
+            AttackAnim();
         }
     }
 
     IEnumerator AttackInterval()
     {
-        Attack();
+        AttackAnim();
+        AttackSub();
         WaitForSeconds wait = new WaitForSeconds(intervalBetweenAttacks);
         yield return wait;
         StartCoroutine("AttackInterval");
     }
 
-    private void Attack()
+    private void AttackAnim()
     {
         anim.SetTrigger("AttackAnimPlay");
+    }
+    protected virtual void AttackSub()
+    {
+        Debug.LogError($"AttackSub not implemented on {gameObject.name}");
     }
     private void LevelUp()
     {

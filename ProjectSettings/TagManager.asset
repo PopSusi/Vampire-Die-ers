@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Obstacles
   - Projectile
+  - PlayerAbilities
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - Obstacle
   - Hit
   - Player
-  - 
-  - 
+  - Enemy
+  - Ability
   - 
   - 
   - 

@@ -40,8 +40,12 @@ public class PlayerController : Damageable
     void Start()
     {
         InitializeComponents();
+        actions.FindAction("XP++").performed += XPUP;
     }
-
+    private void XPUP(InputAction.CallbackContext context)
+    {
+        XPFunc();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -111,8 +115,9 @@ public class PlayerController : Damageable
         if(xp > (20 * level ^ 2))
         {
             level++;
+            LevelUpCanvas.instance.GenerateAbility(level);
+            Debug.Log($"Level Up: {level} - Current XP: {XP}");
         }
         XPUpdateUI?.Invoke(xp, level);
-        
     }
 }

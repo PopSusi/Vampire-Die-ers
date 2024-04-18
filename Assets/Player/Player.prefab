@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 7051547213362970995}
   - component: {fileID: 1541957250245794902}
   - component: {fileID: 38901922686160765}
-  - component: {fileID: 7363530452617442153}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -38,6 +37,7 @@ Transform:
   m_Children:
   - {fileID: 2779080099191261606}
   - {fileID: 231071189579734421}
+  - {fileID: 456779387845680177}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3848018584140391065
@@ -233,28 +233,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7363530452617442153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 611134238486162203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7601fcc0438b4456bb5000ce9c84c0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intervalBetweenAttacks: 0
-  damagePerAttack: 1
-  damagePerLevel: 2
-  speed: 1
-  speedPerLevel: 0.2
-  baseSpeed: 1
-  levelOfAbility: 0
-  myType: 1
-  ability: 0
-  description: A wonderful spice used to scare off monsters of the night.
 --- !u!1 &891726111449047193
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,3 +1062,65 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8343287743580671047}
   m_Enabled: 1
+--- !u!1001 &6393156733713067965
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6182563242874541416}
+    m_Modifications:
+    - target: {fileID: 6840897755865297804, guid: 807998ca473324aebad0276dd82932da, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840897755865297804, guid: 807998ca473324aebad0276dd82932da, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840897755865297804, guid: 807998ca473324aebad0276dd82932da, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840897755865297804, guid: 807998ca473324aebad0276dd82932da, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840897755865297804, guid: 807998ca473324aebad0276dd82932da, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840897755865297804, guid: 807998ca473324aebad0276dd82932da, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840897755865297804, guid: 807998ca473324aebad0276dd82932da, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840897755865297804, guid: 807998ca473324aebad0276dd82932da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840897755865297804, guid: 807998ca473324aebad0276dd82932da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840897755865297804, guid: 807998ca473324aebad0276dd82932da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7426305125731941817, guid: 807998ca473324aebad0276dd82932da, type: 3}
+      propertyPath: m_Name
+      value: Onion
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 807998ca473324aebad0276dd82932da, type: 3}
+--- !u!4 &456779387845680177 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6840897755865297804, guid: 807998ca473324aebad0276dd82932da, type: 3}
+  m_PrefabInstance: {fileID: 6393156733713067965}
+  m_PrefabAsset: {fileID: 0}

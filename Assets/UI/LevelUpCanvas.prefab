@@ -1015,7 +1015,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2064078326441169472
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1111,3 +1111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0eb1eb1013e74b289bc960c76f00241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: {fileID: 6273674572106826843}
+  option1Item: {fileID: 1386429680338780431}
+  option1Desc: {fileID: 8156551325131569999}
+  option2Item: {fileID: 6341978957330811754}
+  option2Desc: {fileID: 4062017183438460366}

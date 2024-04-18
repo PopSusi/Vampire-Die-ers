@@ -29,7 +29,7 @@ public class Projectiles : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log($"{other.gameObject.tag} on Layer {other.gameObject.layer}");
+        //Debug.Log($"{other.gameObject.tag} on Layer {other.gameObject.layer}");
         if(other.gameObject.CompareTag("Player"))
         {
             other.gameObject.GetComponent<PlayerController>().TakeDamage(damage, Damageable.EDamage.Ranged);

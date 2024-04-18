@@ -1,39 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class LevelUpCanvas : MonoBehaviour
 {
     Abilities.EAbility option1, option2;
-    GameObject panel;
-    Text level, option1Item, option1Desc, option2Item, option2Desc;
-    LevelUpCanvas instance;
+    [SerializeField] TextMeshProUGUI level, option1Item, option1Desc, option2Item, option2Desc;
+    public static LevelUpCanvas instance;
     HashSet<Abilities.EAbility> chosen = new HashSet<Abilities.EAbility>();
     // Start is called before the first frame update
     void Awake()
     {
-        instance = instance == null ? this : null;
+        instance = this;
+        gameObject.SetActive(false);
     }
-    public void GenerateAbility()
+    public void GenerateAbility(int levelIn)
     {
         if(chosen.Count > 2)
         {
-            LoadMenu();
+            LoadMenu(levelIn);
             return;
         }
         Abilities.EAbility tempAbility = (Abilities.EAbility)Random.Range(0, 2);
         if (chosen.Contains(tempAbility))
         {
-            GenerateAbility();
+            GenerateAbility(levelIn);
         } else
         {
             chosen.Add(tempAbility);
-            GenerateAbility();
+            GenerateAbility(levelIn);
         }
     }
 
-    private void LoadMenu()
+    private void LoadMenu(int levelIn)
     {
         Abilities[] array = EAbilityToArray();
         option1 = array[0].ability;
@@ -42,6 +42,8 @@ public class LevelUpCanvas : MonoBehaviour
         option2 = array[1].ability;
         option2Item.text = array[1].ability.ToString();
         option2Desc.text = array[1].description;
+        level.text = levelIn.ToString();
+        gameObject.SetActive(true);
     }
 
     private Abilities[] EAbilityToArray()
@@ -60,44 +62,49 @@ public class LevelUpCanvas : MonoBehaviour
     }
     private void ParseLibrary(Abilities.EAbility ability)
     {
+        
         switch (ability){
             case Abilities.EAbility.Onion:
-                if(PlayerController.instance.gameObject.GetComponent<Onion>() == null)
+                if(PlayerController.instance.transform.TryGetComponent<Onion>(out Onion onion))
                 {
-                    PlayerController.instance.gameObject.AddComponent<Onion>();
+                    onion.levelOfAbility++;
                 } else
                 {
-                    PlayerController.instance.gameObject.GetComponent<Onion>().levelOfAbility++;
+                    Instantiate(Resources.Load<GameObject>("Assets/Abilities/Prefabs/Onion"),
+                        PlayerController.instance.gameObject.transform);
                 }
                 break;
             case Abilities.EAbility.Chain:
-                if (PlayerController.instance.gameObject.GetComponent<Chain>() == null)
+                if (PlayerController.instance.transform.TryGetComponent<Chain>(out Chain chain))
                 {
-                    PlayerController.instance.gameObject.AddComponent<Chain>();
+                    chain.levelOfAbility++;
                 }
                 else
                 {
-                    PlayerController.instance.gameObject.GetComponent<Chain>().levelOfAbility++;
+                    Instantiate(Resources.Load<GameObject>("Assets/Abilities/Prefabs/Chain"),
+                        PlayerController.instance.gameObject.transform);
                 }
                 break;
             case Abilities.EAbility.Necronomicon:
-                if (PlayerController.instance.gameObject.GetComponent<Necronomicon>() == null)
+                if (PlayerController.instance.transform.TryGetComponent<Necronomicon>(out Necronomicon necro))
                 {
-                    PlayerController.instance.gameObject.AddComponent<Necronomicon>();
+                    necro.levelOfAbility++;
                 }
                 else
                 {
-                    PlayerController.instance.gameObject.GetComponent<Necronomicon>().levelOfAbility++;
+                    Instantiate(Resources.Load<GameObject>("Assets/Abilities/Prefabs/Necro"),
+                        PlayerController.instance.gameObject.transform);
                 }
                 break;
             default:
-                if (PlayerController.instance.gameObject.GetComponent<Onion>() == null)
+                if (PlayerController.instance.transform.TryGetComponent<Onion>(out Onion defaultOnions))
                 {
-                    PlayerController.instance.gameObject.AddComponent<Onion>();
+                    defaultOnions.levelOfAbility++;
                 }
                 else
                 {
-                    PlayerController.instance.gameObject.GetComponent<Onion>().levelOfAbility++;
+                    Instantiate(Resources.Load<GameObject>("Assets/Abilities/Prefabs/Onion"),
+                        PlayerController.instance.gameObject.transform);
                 }
                 break;
         }

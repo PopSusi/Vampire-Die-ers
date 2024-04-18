@@ -17,9 +17,11 @@ public class Necronomicon : Abilities
         baseSpeed = 1;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        
+        if (collider.gameObject.CompareTag("Enemy"))
+        {
+            collider.gameObject.GetComponent<EnemyBase>().TakeDamage(1f, Damageable.EDamage.Physical);
+        }
     }
 }

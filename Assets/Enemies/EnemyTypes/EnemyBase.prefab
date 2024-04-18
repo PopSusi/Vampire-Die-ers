@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4472083531258364106}
   - component: {fileID: 2651302389969646791}
   - component: {fileID: 3563557276179700372}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: EnemyBase
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -187,6 +187,8 @@ MonoBehaviour:
   closeEnough: 0
   moving: 0
   avoidant: 0
+  rotator: 0
+  myName: 
 --- !u!50 &3563557276179700372
 Rigidbody2D:
   serializedVersion: 4

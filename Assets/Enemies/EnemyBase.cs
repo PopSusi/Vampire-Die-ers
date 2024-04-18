@@ -43,6 +43,7 @@ public class EnemyBase : Damageable
     public delegate void DeathEvent();
     public event DeathEvent enemyDeath;
 
+    private bool spawnedPollution;
     [System.Serializable] public struct Attributes {
 
         public bool projectileBased { get; set;}
@@ -84,8 +85,9 @@ public class EnemyBase : Damageable
     void Start()
     {
         myAttributes = new Attributes(projectileBased, pollute, avoidant, rotator, myType, name);
-        DataSaver.instance.enemies.Add(this);
+        //DataSaver.instance.enemies.Add(this);
         InitializeComponents(); //Set Animator and Sprite
+        HP = 10;
         playerRef = PlayerController.instance; //Get Player Script
         playerObj = PlayerController.instance.gameObject;
         Attack(); //Start with Attack
@@ -237,9 +239,15 @@ public class EnemyBase : Damageable
     protected override void Die()
     {
         enemyDeath?.Invoke();
-        if (myAttributes.pollute)
+        if (myAttributes.pollute && spawnedPollution)
         {
             Instantiate(deathArea, this.transform.position, quaternion.identity);
+            spawnedPollution = true;
         }
+        Destroy(gameObject);
+    }
+    protected override void SubTakeDamage()
+    {
+        Debug.Log($"Damage from Player");
     }
 }

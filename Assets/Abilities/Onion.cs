@@ -19,8 +19,23 @@ public class Onion : Abilities
     }
 
     // Update is called once per frame
-    void Update()
+    private void DamageBurst()
     {
-        
+        Collider2D[] possibles = Physics2D.OverlapCircleAll(transform.position, transform.localScale.x, layerMask);
+        foreach (Collider2D colliderCheck in possibles) {
+            if (colliderCheck.gameObject.CompareTag("Enemy"))
+            {
+                colliderCheck.gameObject.GetComponent<EnemyBase>().TakeDamage(1f, Damageable.EDamage.Magic);
+            }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collider)
+    {
+        if (collider.gameObject.CompareTag("Enemy"))
+        {
+            collider.gameObject.GetComponent<EnemyBase>().TakeDamage(1f, Damageable.EDamage.Magic);
+
+        }
     }
 }
