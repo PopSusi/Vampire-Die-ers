@@ -1,22 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class LevelUpCanvas : MonoBehaviour
 {
     Abilities.EAbility option1, option2;
     [SerializeField] TextMeshProUGUI level, option1Item, option1Desc, option2Item, option2Desc;
+    [SerializeField] Image panel;
     public static LevelUpCanvas instance;
     HashSet<Abilities.EAbility> chosen = new HashSet<Abilities.EAbility>();
     // Start is called before the first frame update
     void Awake()
     {
         instance = this;
-        gameObject.SetActive(false);
+        
     }
     public void GenerateAbility(int levelIn)
     {
+
         if(chosen.Count > 2)
         {
             LoadMenu(levelIn);
@@ -35,6 +38,7 @@ public class LevelUpCanvas : MonoBehaviour
 
     private void LoadMenu(int levelIn)
     {
+        panel.gameObject.SetActive(true);
         Abilities[] array = EAbilityToArray();
         option1 = array[0].ability;
         option1Item.text = array[0].ability.ToString();
@@ -108,6 +112,7 @@ public class LevelUpCanvas : MonoBehaviour
                 }
                 break;
         }
+        panel.gameObject.SetActive(false);
     }
 
 }
