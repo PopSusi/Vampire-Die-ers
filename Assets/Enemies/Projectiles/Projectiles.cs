@@ -32,7 +32,7 @@ public class Projectiles : MonoBehaviour
         Debug.Log($"{other.gameObject.tag} on Layer {other.gameObject.layer}");
         if(other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
+            other.gameObject.GetComponent<PlayerController>().TakeDamage(damage, Damageable.EDamage.Ranged);
             Destroy(gameObject);
         }
     }

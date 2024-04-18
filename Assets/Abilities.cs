@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class Abilities : MonoBehaviour
 {
-    protected float intervalBetweenAttacks, damagePerAttack, speed, baseSpeed;
+    [SerializeField] protected float intervalBetweenAttacks, damagePerAttack, damagePerLevel, speed, speedPerLevel, baseSpeed;
     protected Animator anim;
     public int levelOfAbility;
-    protected enum Type { Interval, Continuous };
-    [SerializeField] protected Type myType = Type.Interval;
-    protected enum EAbility { Onion, Chain, Necronomican};
-    [SerializeField] protected EAbility ability = EAbility.Onion;
+    public enum EAbility { Onion, Chain, Necronomicon};
+    public EAbility ability = EAbility.Onion;
+    public string description = " ";
 
     // Start is called before the first frame update
     void Start()
     {
-        baseSpeed = speed;
-        if (myType == Type.Interval) {
+        if (intervalBetweenAttacks > 0) {
          StartCoroutine("Attackinterval");
+        }
+        else
+        {
+            Attack();
         }
     }
 
@@ -37,6 +39,7 @@ public class Abilities : MonoBehaviour
     {
         levelOfAbility++;
         speed++;
+        damagePerAttack += damagePerLevel;
         anim.speed = speed / baseSpeed;
     }
 }

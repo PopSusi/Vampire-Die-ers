@@ -211,7 +211,7 @@ public class EnemyBase : Damageable
     {
         if (other.gameObject.CompareTag("Player") && canCollide)
         {
-            playerRef.TakeDamage(1);
+            playerRef.TakeDamage(1, EDamage.Physical);
             canCollide = false;
             ColliderDelay();
         }

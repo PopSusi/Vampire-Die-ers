@@ -40,10 +40,10 @@ public class Damageable : MonoBehaviour //Game Class for Enemies and Players
     public float HP = 100; //
     public bool dead;
 
-    public virtual void TakeDamage(float incomingDamage)
+    public void TakeDamage(float incomingDamage, EDamage type)
     {
         HP -= incomingDamage;
-        /*switch (type)
+        switch (type)
         {
             case EDamage.Ranged:
                 spriteControls.color += Color.black;
@@ -55,12 +55,17 @@ public class Damageable : MonoBehaviour //Game Class for Enemies and Players
             default:
                 spriteControls.color += Color.red;
                 break;
-        }*/
+        }
 
         if (HP <= 0)
         {
             Die();
         }
+        SubTakeDamage();
+    }
+    protected virtual void SubTakeDamage()
+    {
+        Debug.LogError($"SubTakeDamage not implemented on {gameObject.name}");
     }
 
     public virtual void InitializeComponents()

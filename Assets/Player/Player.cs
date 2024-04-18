@@ -44,6 +44,15 @@ public partial class @Player: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""XP++"",
+                    ""type"": ""Button"",
+                    ""id"": ""41150653-0ada-4018-b1fc-81773674ac84"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -112,6 +121,17 @@ public partial class @Player: IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""be36a3b6-d9f5-42ed-9966-f229ea6aecaf"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""XP++"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -128,6 +148,7 @@ public partial class @Player: IInputActionCollection2, IDisposable
         m_Base = asset.FindActionMap("Base", throwIfNotFound: true);
         m_Base_Walk = m_Base.FindAction("Walk", throwIfNotFound: true);
         m_Base_Pause = m_Base.FindAction("Pause", throwIfNotFound: true);
+        m_Base_XP = m_Base.FindAction("XP++", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -191,12 +212,14 @@ public partial class @Player: IInputActionCollection2, IDisposable
     private List<IBaseActions> m_BaseActionsCallbackInterfaces = new List<IBaseActions>();
     private readonly InputAction m_Base_Walk;
     private readonly InputAction m_Base_Pause;
+    private readonly InputAction m_Base_XP;
     public struct BaseActions
     {
         private @Player m_Wrapper;
         public BaseActions(@Player wrapper) { m_Wrapper = wrapper; }
         public InputAction @Walk => m_Wrapper.m_Base_Walk;
         public InputAction @Pause => m_Wrapper.m_Base_Pause;
+        public InputAction @XP => m_Wrapper.m_Base_XP;
         public InputActionMap Get() { return m_Wrapper.m_Base; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -212,6 +235,9 @@ public partial class @Player: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @XP.started += instance.OnXP;
+            @XP.performed += instance.OnXP;
+            @XP.canceled += instance.OnXP;
         }
 
         private void UnregisterCallbacks(IBaseActions instance)
@@ -222,6 +248,9 @@ public partial class @Player: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @XP.started -= instance.OnXP;
+            @XP.performed -= instance.OnXP;
+            @XP.canceled -= instance.OnXP;
         }
 
         public void RemoveCallbacks(IBaseActions instance)
@@ -252,5 +281,6 @@ public partial class @Player: IInputActionCollection2, IDisposable
     {
         void OnWalk(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnXP(InputAction.CallbackContext context);
     }
 }
