@@ -36,7 +36,7 @@ public class LevelManager : Managers
             for (int i = 0; i < Random.Range(obsCountRange, obsCountRange); i++) //For between min and max obstacles
             {
                 int j = Random.Range(0, Obstacles.Length); //Randomly choose Obstacles by Level
-                Debug.Log($"{j} out of {Obstacles.Length - 1}");
+                //Debug.Log($"{j} out of {Obstacles.Length - 1}");
                 Vector3 spawnObsPos = new Vector3(Random.Range(-size.x, size.x), Random.Range(-size.y, size.y), 0);
                 //Create spawn point in bounds of Negative and Positive size
                 GameObject obst = Instantiate(Obstacles[j], spawnObsPos, Quaternion.identity); //Instantiate

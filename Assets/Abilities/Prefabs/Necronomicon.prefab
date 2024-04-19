@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6840897755865297804}
   - component: {fileID: 4145924787560120643}
   - component: {fileID: 6700528672206700012}
-  - component: {fileID: -7147484564675299770}
+  - component: {fileID: 5586223853048444980}
   m_Layer: 9
-  m_Name: Chain
+  m_Name: Necronomicon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,7 +96,7 @@ Animator:
   m_GameObject: {fileID: 7426305125731941817}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: ec2ca1d9f959e4f04bfb34bf63a556ed, type: 2}
+  m_Controller: {fileID: 22100000, guid: 98ec271c3589a4abebd8ee62de3b228a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -107,7 +107,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-7147484564675299770
+--- !u!114 &5586223853048444980
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7426305125731941817}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a455dd77a3dfb434fad9e21d14c5faaf, type: 3}
+  m_Script: {fileID: 11500000, guid: d84732b36fc0a485dbd7abf31a504164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   intervalBetweenAttacks: 0
@@ -126,5 +126,5 @@ MonoBehaviour:
   speedPerLevel: 0
   baseSpeed: 0
   levelOfAbility: 0
-  ability: 1
+  ability: 2
   description: ' '

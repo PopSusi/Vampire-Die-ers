@@ -143,8 +143,8 @@ public class EnemyBase : Damageable
                         dirToGoal = (transform.position - playerObj.transform.position)
                             .normalized; //DIR FROM PLAYER AND 90 ROTATION - AVOID
                         dirToGoal = Quaternion.Euler(0, 0, 45 * dirMod) * dirToGoal;
-                        Debug.DrawLine(transform.position, transform.position + dirToGoal * 5);
-                        Debug.Log("GOING TO SIDE");
+                        //Debug.DrawLine(transform.position, transform.position + dirToGoal * 5);
+                        //Debug.Log("GOING TO SIDE");
                         StartCoroutine("ApproachDelay");
                     }
                     else
@@ -239,6 +239,7 @@ public class EnemyBase : Damageable
     protected override void Die()
     {
         enemyDeath?.Invoke();
+        Debug.Log("Supposed to be dead");
         if (myAttributes.pollute && spawnedPollution)
         {
             Instantiate(deathArea, this.transform.position, quaternion.identity);
@@ -248,6 +249,6 @@ public class EnemyBase : Damageable
     }
     protected override void SubTakeDamage()
     {
-        Debug.Log($"Damage from Player");
+        //Debug.Log($"Damage from Player");
     }
 }

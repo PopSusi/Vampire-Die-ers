@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class Onion : Abilities
 {
-    
-    // Start is called before the first frame update
-    void Awake()
-    {
-        ability = EAbility.Onion;
-        description = "A wonderful spice used to scare off monsters of the night.";
-        intervalBetweenAttacks = 0;
-        damagePerAttack = 1;
-        damagePerLevel = 2;
-        speed = 1;
-        speedPerLevel = .2f;
-        baseSpeed = 1;
-    }
+    public override EAbility ability { get { return EAbility.Onion; } set { ability = value; } }
+    public override string description { get { return "A wonderful spice used to scare off monsters of the night."; } set { description = value; } }
+    protected override float intervalBetweenAttacks { get { return 0f; } set { intervalBetweenAttacks = value; } }
+    protected override float damagePerAttack { get { return 1f; } set { damagePerAttack = value; } }
+    protected override float damagePerLevel { get { return 2f; } set { damagePerLevel = value; } }
+    protected override float speed { get { return 1f; } set { speed = value; } }
+    protected override float speedPerLevel { get { return .2f; } set { speedPerLevel = value; } }
+    protected override float baseSpeed { get { return 1f; } set { baseSpeed = value; } }
 
     // Update is called once per frame
     private void DamageBurst()

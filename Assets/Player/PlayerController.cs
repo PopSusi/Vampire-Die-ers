@@ -88,7 +88,7 @@ public class PlayerController : Damageable
     protected override void SubTakeDamage()
     {
         healthBar.SetHealth((int)HP);
-        Debug.Log(HP);
+        //Debug.Log(HP);
     }
 
     public void UpdateScore(int incoming)
@@ -111,11 +111,12 @@ public class PlayerController : Damageable
     }
     private void XPFunc()
     {
-        XP += 100;
+        XP += 10;
+        Debug.Log($"Gained 10 XP");
         if(xp > (20 * level ^ 2))
         {
             level++;
-            LevelUpCanvas.instance.GenerateAbility(level);
+            LevelUpCanvas.instance.GenerateAbilities(level);
             Debug.Log($"Level Up: {level} - Current XP: {XP}");
         }
         XPUpdateUI?.Invoke(xp, level);

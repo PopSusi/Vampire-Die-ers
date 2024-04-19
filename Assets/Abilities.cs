@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Abilities : MonoBehaviour
+public abstract class Abilities : MonoBehaviour
 {
-    [SerializeField] protected float intervalBetweenAttacks, damagePerAttack, damagePerLevel, speed, speedPerLevel, baseSpeed;
-    protected Animator anim;
+    public abstract string description { get; set; }
+    protected abstract float intervalBetweenAttacks { get; set; }
+        protected abstract float damagePerAttack { get; set; }
+        protected abstract float damagePerLevel { get; set; }
+        protected abstract float speed { get; set; }
+        protected abstract float speedPerLevel { get; set; }
+        protected abstract float baseSpeed { get; set; }
+        protected Animator anim;
     public int levelOfAbility;
-    public enum EAbility { Onion, Chain, Necronomicon};
-    public EAbility ability = EAbility.Onion;
-    public string description = " ";
+    public enum EAbility { Onion = 0, Chain, Necronomicon};
+    public abstract EAbility ability { get; set; }
     protected LayerMask layerMask = 10;
 
     // Start is called before the first frame update

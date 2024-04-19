@@ -41,7 +41,7 @@ public class Pollute : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        Debug.Log($"Interacting with {other.gameObject.tag}");
+        //Debug.Log($"Interacting with {other.gameObject.tag}");
         if (other.gameObject.CompareTag("Player"))
         {
             if (dealDamage)

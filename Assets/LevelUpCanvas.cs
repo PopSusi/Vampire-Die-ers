@@ -6,7 +6,7 @@ using TMPro;
 
 public class LevelUpCanvas : MonoBehaviour
 {
-    Abilities.EAbility option1, option2;
+    Abilities option1, option2;
     [SerializeField] TextMeshProUGUI level, option1Item, option1Desc, option2Item, option2Desc;
     [SerializeField] Image panel;
     public static LevelUpCanvas instance;
@@ -14,36 +14,35 @@ public class LevelUpCanvas : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        instance = this;
-        
+        Instance();
     }
-    public void GenerateAbility(int levelIn)
+    public void GenerateAbilities(int levelIn)
     {
-
-        if(chosen.Count > 2)
+        System.Array A = System.Enum.GetValues(typeof(Abilities.EAbility));
+        while (chosen.Count < 2)
         {
-            LoadMenu(levelIn);
-            return;
+            Abilities.EAbility tempAbility = (Abilities.EAbility)A.GetValue(Random.Range(0, A.Length));
+            if (!chosen.Contains(tempAbility))
+            {
+                chosen.Add(tempAbility);
+            }
         }
-        Abilities.EAbility tempAbility = (Abilities.EAbility)Random.Range(0, 2);
-        if (chosen.Contains(tempAbility))
-        {
-            GenerateAbility(levelIn);
-        } else
-        {
-            chosen.Add(tempAbility);
-            GenerateAbility(levelIn);
-        }
+        LoadMenu(levelIn);
+    }
+    private void Instance()
+    {
+        instance = this;
+        //Debug.Log("instaced " + instance.gameObject.name);
     }
 
     private void LoadMenu(int levelIn)
     {
         panel.gameObject.SetActive(true);
         Abilities[] array = EAbilityToArray();
-        option1 = array[0].ability;
+        option1 = array[0];
         option1Item.text = array[0].ability.ToString();
         option1Desc.text = array[0].description;
-        option2 = array[1].ability;
+        option2 = array[1];
         option2Item.text = array[1].ability.ToString();
         option2Desc.text = array[1].description;
         level.text = levelIn.ToString();
@@ -52,8 +51,15 @@ public class LevelUpCanvas : MonoBehaviour
 
     private Abilities[] EAbilityToArray()
     {
-        Abilities[] tempArray = new Abilities[2];
-        return tempArray;
+        Abilities.EAbility[] tempArray = new Abilities.EAbility[2];
+        //Debug.Log(chosen.Count);
+        chosen.CopyTo(tempArray);
+        Abilities[] converted = new Abilities[2];
+        for(int i = 0 ; i < converted.Length; i++)
+        {
+            converted[i] = ParseLibrary(tempArray[i]);
+        }
+        return converted;
     }
     public void Option1()
     {
@@ -64,10 +70,27 @@ public class LevelUpCanvas : MonoBehaviour
     {
         ParseLibrary(option2);
     }
-    private void ParseLibrary(Abilities.EAbility ability)
+
+    private Abilities ParseLibrary(Abilities.EAbility ability)
+    {
+
+        switch (ability)
+        {
+            case Abilities.EAbility.Onion:
+                return new Onion();
+            case Abilities.EAbility.Chain:
+                return new Chain();
+            case Abilities.EAbility.Necronomicon:
+                return new Necronomicon();
+            default:
+                return new Onion();
+        }
+        panel.gameObject.SetActive(false);
+    }
+    private void ParseLibrary(Abilities ability)
     {
         
-        switch (ability){
+        switch (ability.ability){
             case Abilities.EAbility.Onion:
                 if(PlayerController.instance.transform.TryGetComponent<Onion>(out Onion onion))
                 {
