@@ -97,7 +97,7 @@ public class LevelUpCanvas : MonoBehaviour
                     onion.levelOfAbility++;
                 } else
                 {
-                    Instantiate(Resources.Load<GameObject>("Assets/Abilities/Prefabs/Onion"),
+                    Instantiate(Resources.Load<GameObject>("Abilities/Prefabs/Onion"),
                         PlayerController.instance.gameObject.transform);
                 }
                 break;
@@ -108,7 +108,7 @@ public class LevelUpCanvas : MonoBehaviour
                 }
                 else
                 {
-                    Instantiate(Resources.Load<GameObject>("Assets/Abilities/Prefabs/Chain"),
+                    Instantiate(Resources.Load<GameObject>("Abilities/Prefabs/Chain"),
                         PlayerController.instance.gameObject.transform);
                 }
                 break;
@@ -119,7 +119,7 @@ public class LevelUpCanvas : MonoBehaviour
                 }
                 else
                 {
-                    Instantiate(Resources.Load<GameObject>("Assets/Abilities/Prefabs/Necro"),
+                    Instantiate(Resources.Load<GameObject>("Abilities/Prefabs/Necronomicon"),
                         PlayerController.instance.gameObject.transform);
                 }
                 break;
@@ -130,7 +130,7 @@ public class LevelUpCanvas : MonoBehaviour
                 }
                 else
                 {
-                    Instantiate(Resources.Load<GameObject>("Assets/Abilities/Prefabs/Onion"),
+                    Instantiate(Resources.Load<GameObject>("Abilities/Prefabs/Onion"),
                         PlayerController.instance.gameObject.transform);
                 }
                 break;

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4145924787560120643}
   - component: {fileID: 6700528672206700012}
   - component: {fileID: -7147484564675299770}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Chain
-  m_TagString: Untagged
+  m_TagString: PlayerAbilities
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 27.86, y: 27.86, z: 27.86}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -119,12 +119,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a455dd77a3dfb434fad9e21d14c5faaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intervalBetweenAttacks: 0
-  damagePerAttack: 0
-  damagePerLevel: 0
-  speed: 0
-  speedPerLevel: 0
-  baseSpeed: 0
   levelOfAbility: 0
-  ability: 1
-  description: ' '

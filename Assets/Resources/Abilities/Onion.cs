@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Onion : Abilities
@@ -13,9 +14,12 @@ public class Onion : Abilities
     protected override float speedPerLevel { get { return .2f; } set { speedPerLevel = value; } }
     protected override float baseSpeed { get { return 1f; } set { baseSpeed = value; } }
 
+    HashSet<GameObject> EnemiesHit = new HashSet<GameObject>();
+
     // Update is called once per frame
     private void DamageBurst()
     {
+        Debug.Log("Burst");
         Collider2D[] possibles = Physics2D.OverlapCircleAll(transform.position, transform.localScale.x, layerMask);
         foreach (Collider2D colliderCheck in possibles) {
             if (colliderCheck.gameObject.CompareTag("Enemy"))
@@ -29,8 +33,22 @@ public class Onion : Abilities
     {
         if (collider.gameObject.CompareTag("Enemy"))
         {
-            collider.gameObject.GetComponent<EnemyBase>().TakeDamage(1f, Damageable.EDamage.Magic);
+            if (!EnemiesHit.Contains(collider.gameObject)) 
+            {
+                collider.gameObject.GetComponent<EnemyBase>().TakeDamage(1f, Damageable.EDamage.Magic);
+                EnemiesHit.Add(collider.gameObject);
+                StartCoroutine(RemoveEnemyFromDelay(collider.gameObject));
+            }
+            Debug.Log("Damage");
+        }
+    }
 
+    private IEnumerator RemoveEnemyFromDelay(GameObject enemy)
+    {
+        yield return new WaitForSeconds(.1f);
+        if (EnemiesHit.Contains(enemy))
+        {
+            EnemiesHit.Remove(enemy);
         }
     }
 }

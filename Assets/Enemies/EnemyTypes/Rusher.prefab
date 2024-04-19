@@ -36,6 +36,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rusher
       objectReference: {fileID: 0}
+    - target: {fileID: 6721970860528301688, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 56c68260bbce0064bacacdcc5fc65801, type: 2}
     - target: {fileID: 7287410378531273155, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -76,6 +80,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8117465261822443411, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -71988905, guid: 29c6c62cc26f20542b30f6f7391a3b5e, type: 3}
     m_RemovedComponents:
     - {fileID: 2707552553674063054, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
     m_RemovedGameObjects: []

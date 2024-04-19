@@ -239,7 +239,7 @@ public class EnemyBase : Damageable
     protected override void Die()
     {
         enemyDeath?.Invoke();
-        Debug.Log("Supposed to be dead");
+        //Debug.Log("Supposed to be dead");
         if (myAttributes.pollute && spawnedPollution)
         {
             Instantiate(deathArea, this.transform.position, quaternion.identity);
