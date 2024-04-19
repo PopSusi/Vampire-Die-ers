@@ -121,7 +121,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 23336503064964404}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6910903476908217795}
+        m_TargetAssemblyTypeName: LevelUpCanvas, Assembly-CSharp
+        m_MethodName: Option2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &861754217223731332
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,7 +659,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6038144799107390178}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6910903476908217795}
+        m_TargetAssemblyTypeName: LevelUpCanvas, Assembly-CSharp
+        m_MethodName: Option1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6502515012467851661
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,7 +823,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1265955785261663656
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1015,7 +1039,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2064078326441169472
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1116,3 +1140,4 @@ MonoBehaviour:
   option1Desc: {fileID: 8156551325131569999}
   option2Item: {fileID: 6341978957330811754}
   option2Desc: {fileID: 4062017183438460366}
+  panel: {fileID: 932115288818089946}

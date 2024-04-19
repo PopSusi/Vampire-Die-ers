@@ -35,7 +35,7 @@ PrefabInstance:
     - target: {fileID: 2651302389969646791, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
       propertyPath: projectile
       value: 
-      objectReference: {fileID: 6798077920432775670, guid: 195d57cc35611be44b295320289ef350, type: 3}
+      objectReference: {fileID: 8702034667130260200, guid: 23dba2176d7fcce4db060e23fbb6812d, type: 3}
     - target: {fileID: 2651302389969646791, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
       propertyPath: attackDelay
       value: 3
@@ -90,11 +90,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7287410378531273155, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.841
+      value: -2.181
       objectReference: {fileID: 0}
     - target: {fileID: 7287410378531273155, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.06881468
+      value: -0.547
       objectReference: {fileID: 0}
     - target: {fileID: 7287410378531273155, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
       propertyPath: m_LocalPosition.z
