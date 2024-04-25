@@ -13,6 +13,10 @@ PrefabInstance:
       value: Rotator
       objectReference: {fileID: 0}
     - target: {fileID: 2651302389969646791, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
+      propertyPath: type
+      value: 
+      objectReference: {fileID: 11400000, guid: 3e3e63fcb2d9d4624acf1cd93159ca88, type: 2}
+    - target: {fileID: 2651302389969646791, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
       propertyPath: speed
       value: 2
       objectReference: {fileID: 0}

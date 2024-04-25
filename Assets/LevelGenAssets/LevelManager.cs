@@ -17,7 +17,17 @@ public class LevelManager : Managers
     public Density myDens;
     private void Start()
     {
+        StartCoroutine("EnemyLoop");
     }
+
+    IEnumerator EnemyLoop()
+    {
+        for (int i = 0; i < Random.Range(5, 10); i++)
+        {
+            SpawnEnemy();
+        }
+        yield return new WaitForSeconds(Random.Range(3f, 8f));
+;    }
 
     protected void SpawnEnemy()
     {
