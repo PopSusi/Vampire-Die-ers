@@ -17,7 +17,8 @@ MonoBehaviour:
   pollute: 0
   avoidant: 0
   rotator: 0
-  closestToPlayer: 10
-  moveDelay: 0
-  Walk: {fileID: 0}
-  Death: {fileID: 0}
+  closestToPlayer: 1.5
+  moveDelay: 2
+  speed: 2
+  attackDelay: 0.5
+  animations: {fileID: 22100000, guid: 5e457adca4f342f479bbc310414ba3a8, type: 2}

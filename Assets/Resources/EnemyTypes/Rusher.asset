@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myType: 0
   projectileBased: 0
-  pollute: 0
+  pollute: 1
   avoidant: 0
   rotator: 0
-  closestToPlayer: 10
-  moveDelay: 0
-  Walk: {fileID: 0}
-  Death: {fileID: 0}
+  closestToPlayer: 0.5
+  moveDelay: 1
+  speed: 5
+  attackDelay: 1
+  animations: {fileID: 22100000, guid: 56c68260bbce0064bacacdcc5fc65801, type: 2}

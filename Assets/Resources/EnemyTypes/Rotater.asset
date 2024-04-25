@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Rotater
   m_EditorClassIdentifier: 
   myType: 0
-  projectileBased: 0
-  pollute: 0
-  avoidant: 0
-  rotator: 0
-  closestToPlayer: 10
-  moveDelay: 0
-  Walk: {fileID: 0}
-  Death: {fileID: 0}
+  projectileBased: 1
+  pollute: 1
+  avoidant: 1
+  rotator: 1
+  closestToPlayer: 4
+  moveDelay: 2
+  speed: 3
+  attackDelay: 0
+  animations: {fileID: 22100000, guid: f2eb5c454942f174cafdc6b089d84a45, type: 2}

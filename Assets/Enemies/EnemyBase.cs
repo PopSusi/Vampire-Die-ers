@@ -1,35 +1,26 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Net.NetworkInformation;
-using System.Numerics;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
-using UnityEngine.AI;
-using UnityEngine.Animations;
-using UnityEngine.EventSystems;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
-using System.Xml;
-using System.IO;
-using System.Xml.Serialization;
 
 public class EnemyBase : Damageable
 {
-    public GameObject playerObj; //Player Object in Scene - Singleton
-    public PlayerController playerRef; //Player Script in Scene - Singleton
+    private GameObject playerObj; //Player Object in Scene - Singleton
+    private PlayerController playerRef; //Player Script in Scene - Singleton
     public GameObject deathArea; //Can be empty
     public GameObject projectile; //Can be empty
     public EnemyType type;
 
     private bool canAttack = true; //Able to attack - Allows us to use delay
     private bool canCollide = true;
-    public Vector3 dirToPlayer; //Direction towards player
+    [HideInInspector] public Vector3 dirToPlayer; //Direction towards player
     private float distToPlayer; //How far from player - Float because Vector3.Distance().normalized returns float
-    public Vector3 dirToGoal;
-    public bool closeEnough; //Bool if enemy is close enough to the player to attack or do special stuff
-    public bool moving; //Bool for if enemy can move, always opposite of closeEnough - Is own variable to override sometimes
+    private Vector3 dirToGoal;
+    private bool closeEnough; //Bool if enemy is close enough to the player to attack or do special stuff
+    private bool moving; //Bool for if enemy can move, always opposite of closeEnough - Is own variable to override sometimes
     private bool rotApproach = true;
     public Attributes myAttributes;
     public string myName;

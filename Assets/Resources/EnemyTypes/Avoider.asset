@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Avoider
   m_EditorClassIdentifier: 
   myType: 0
-  projectileBased: 0
-  pollute: 0
-  closestToPlayer: 10
-  avoidant: 0
+  projectileBased: 1
+  pollute: 1
+  avoidant: 1
   rotator: 0
-  Attack: {fileID: 0}
-  Idle: {fileID: 0}
+  closestToPlayer: 4
+  moveDelay: 2
+  speed: 3
+  attackDelay: 4
+  animations: {fileID: 22100000, guid: 9b13b4ce1841d9344ac7fec7523b63ea, type: 2}
