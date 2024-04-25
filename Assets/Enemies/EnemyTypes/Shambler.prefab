@@ -13,6 +13,10 @@ PrefabInstance:
       value: Shambler
       objectReference: {fileID: 0}
     - target: {fileID: 2651302389969646791, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
+      propertyPath: type
+      value: 
+      objectReference: {fileID: 11400000, guid: 8717e919bf6a34c9db934588798a0620, type: 2}
+    - target: {fileID: 2651302389969646791, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
       propertyPath: speed
       value: 1
       objectReference: {fileID: 0}

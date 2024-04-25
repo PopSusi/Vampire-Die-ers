@@ -13,6 +13,10 @@ PrefabInstance:
       value: Avoider
       objectReference: {fileID: 0}
     - target: {fileID: 2651302389969646791, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
+      propertyPath: type
+      value: 
+      objectReference: {fileID: 11400000, guid: 19f8c15b935d1460ca7d6dbf5f57eb82, type: 2}
+    - target: {fileID: 2651302389969646791, guid: e1dfc73a3fc9cd3408ab453428b6d847, type: 3}
       propertyPath: speed
       value: 2
       objectReference: {fileID: 0}

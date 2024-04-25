@@ -18,6 +18,7 @@ public class PlayerController : Damageable
     private InputActionAsset actions;
     public InputAction moveAction;
     private Vector2 moveAmount;
+    public float speed;
     private int xp;
     private int level;
     [SerializeField] private int XP

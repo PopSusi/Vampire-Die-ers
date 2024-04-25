@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e164ef5c6c464b34b35a3be253cd7ad, type: 3}
+  m_Name: Necronomicon
+  m_EditorClassIdentifier: 
+  description: The Book of The Dead. What could be a better suited tool for killing
+    the undead?
+  intervalBetweenAttacks: -1
+  damagePerAttack: 3
+  damagePerLevel: 0.3
+  speed: 1
+  speedPerLevel: 2
+  baseSpeed: 1
+  ability: 2

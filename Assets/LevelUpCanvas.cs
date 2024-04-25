@@ -40,11 +40,11 @@ public class LevelUpCanvas : MonoBehaviour
         panel.gameObject.SetActive(true);
         Abilities[] array = EAbilityToArray();
         option1 = array[0];
-        option1Item.text = array[0].ability.ToString();
-        option1Desc.text = array[0].description;
+        option1Item.text = array[0].type.ability.ToString();
+        option1Desc.text = array[0].type.description;
         option2 = array[1];
-        option2Item.text = array[1].ability.ToString();
-        option2Desc.text = array[1].description;
+        option2Item.text = array[1].type.ability.ToString();
+        option2Desc.text = array[1].type.description;
         level.text = levelIn.ToString();
         gameObject.SetActive(true);
     }
@@ -77,20 +77,22 @@ public class LevelUpCanvas : MonoBehaviour
         switch (ability)
         {
             case Abilities.EAbility.Onion:
+                panel.gameObject.SetActive(false);
                 return new Onion();
             case Abilities.EAbility.Chain:
+                panel.gameObject.SetActive(false);
                 return new Chain();
             case Abilities.EAbility.Necronomicon:
+                panel.gameObject.SetActive(false);
                 return new Necronomicon();
             default:
                 return new Onion();
         }
-        panel.gameObject.SetActive(false);
     }
     private void ParseLibrary(Abilities ability)
     {
         
-        switch (ability.ability){
+        switch (ability.type.ability){
             case Abilities.EAbility.Onion:
                 if(PlayerController.instance.transform.TryGetComponent<Onion>(out Onion onion))
                 {

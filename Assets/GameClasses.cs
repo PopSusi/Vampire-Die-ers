@@ -29,9 +29,6 @@ public class Damageable : MonoBehaviour //Game Class for Enemies and Players
     //ASSUME COMMENTS START WITH "ALL OBJECTS HAVE [TYPE]
     public SpriteRenderer spriteControls; //Sprites, Name is normalized here
     public Animator animControls; //Animator, Name is normalized here
-    public AnimatorOverrideController myAnims;
-    public float attackDelay = 5; //Every {[}attackSpeed} Seconds
-    public float speed = 5; //Default Move Speed
     protected bool faceLeft;
     public enum EDamage
     {
@@ -72,7 +69,6 @@ public class Damageable : MonoBehaviour //Game Class for Enemies and Players
     {
         spriteControls = GetComponent<SpriteRenderer>();
         animControls = GetComponent<Animator>();
-        animControls.runtimeAnimatorController = myAnims;
         animControls.SetFloat("HP", HP);
     }
     protected virtual void Die()

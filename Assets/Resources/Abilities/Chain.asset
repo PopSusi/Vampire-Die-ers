@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e164ef5c6c464b34b35a3be253cd7ad, type: 3}
+  m_Name: Chain
+  m_EditorClassIdentifier: 
+  description: A thick metal chain forged by the greated chainsmiths... is that really
+    what we call them?
+  intervalBetweenAttacks: 3
+  damagePerAttack: 2
+  damagePerLevel: 1
+  speed: 1
+  speedPerLevel: 1
+  baseSpeed: 1
+  ability: 1

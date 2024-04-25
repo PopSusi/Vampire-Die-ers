@@ -4,19 +4,11 @@ using UnityEngine;
 
 public abstract class Abilities : MonoBehaviour
 {
-    public abstract string description { get; set; }
-    protected abstract float intervalBetweenAttacks { get; set; }
-        protected abstract float damagePerAttack { get; set; }
-        protected abstract float damagePerLevel { get; set; }
-        protected abstract float speed { get; set; }
-        protected abstract float speedPerLevel { get; set; }
-        protected abstract float baseSpeed { get; set; }
-        protected Animator anim;
+    public AbilityType type;
     public int levelOfAbility;
     public enum EAbility { Onion = 0, Chain, Necronomicon};
-    public abstract EAbility ability { get; set; }
     protected LayerMask layerMask = 10;
-
+    protected Animator anim;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -24,7 +16,7 @@ public abstract class Abilities : MonoBehaviour
     }
     void Start()
     {
-        if (intervalBetweenAttacks > 0) {
+        if (type.intervalBetweenAttacks > 0) {
          StartCoroutine("Attackinterval");
         }
         else
@@ -37,7 +29,7 @@ public abstract class Abilities : MonoBehaviour
     {
         AttackAnim();
         AttackSub();
-        WaitForSeconds wait = new WaitForSeconds(intervalBetweenAttacks);
+        WaitForSeconds wait = new WaitForSeconds(type.intervalBetweenAttacks);
         yield return wait;
         StartCoroutine("AttackInterval");
     }
@@ -53,8 +45,8 @@ public abstract class Abilities : MonoBehaviour
     private void LevelUp()
     {
         levelOfAbility++;
-        speed++;
-        damagePerAttack += damagePerLevel;
-        anim.speed = speed / baseSpeed;
+        type.speed++;
+        type.damagePerAttack += type.damagePerLevel;
+        anim.speed = type.speed / type.baseSpeed;
     }
 }

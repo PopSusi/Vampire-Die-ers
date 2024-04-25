@@ -21,21 +21,15 @@ public class EnemyBase : Damageable
     public PlayerController playerRef; //Player Script in Scene - Singleton
     public GameObject deathArea; //Can be empty
     public GameObject projectile; //Can be empty
+    public EnemyType type;
 
-    public bool projectileBased;
-    public EDamage myType = EDamage.Physical; //Default Type
-    public bool pollute; //If enemy leaves AOE after death
     private bool canAttack = true; //Able to attack - Allows us to use delay
-    public float moveDelay; //How long before moving is set back to active after attack
     private bool canCollide = true;
     public Vector3 dirToPlayer; //Direction towards player
     private float distToPlayer; //How far from player - Float because Vector3.Distance().normalized returns float
     public Vector3 dirToGoal;
-    public float closestToPlayer = 10; //When Enemy stops approaching
     public bool closeEnough; //Bool if enemy is close enough to the player to attack or do special stuff
     public bool moving; //Bool for if enemy can move, always opposite of closeEnough - Is own variable to override sometimes
-    public bool avoidant;
-    public bool rotator; //AVOIDANT AND ROTATOR MUST BE TRUE FOR ROTATION BEHAVIOUR
     private bool rotApproach = true;
     public Attributes myAttributes;
     public string myName;
@@ -84,7 +78,7 @@ public class EnemyBase : Damageable
     
     void Start()
     {
-        myAttributes = new Attributes(projectileBased, pollute, avoidant, rotator, myType, name);
+        myAttributes = new Attributes(type.projectileBased, type.pollute, type.avoidant, type.rotator, type.myType, name);
         //DataSaver.instance.enemies.Add(this);
         InitializeComponents(); //Set Animator and Sprite
         HP = 10;
@@ -93,6 +87,7 @@ public class EnemyBase : Damageable
         Attack(); //Start with Attack
         StartCoroutine("UpdateDistance"); //Starts recursive check for Direction and Distance
         PlayerController.instance.SubscribeToEnemyDeath(this);
+        animControls.runtimeAnimatorController = type.animations;
     }
     
 
@@ -109,7 +104,7 @@ public class EnemyBase : Damageable
     IEnumerator UpdateDistance() //Recursive function to get values about finding player
     {
         distToPlayer = Vector3.Distance(playerObj.transform.position, this.transform.position);
-        closeEnough = distToPlayer <= closestToPlayer;
+        closeEnough = distToPlayer <= type.closestToPlayer;
         animControls.SetBool("moving", moving);
         MovementUpdate();
         yield return new WaitForSeconds(.5f);
@@ -120,7 +115,7 @@ public class EnemyBase : Damageable
     {
         if (moving)
         {
-            transform.Translate(Time.deltaTime * speed * dirToGoal);
+            transform.Translate(Time.deltaTime * type.speed * dirToGoal);
         }
     }
 
@@ -196,14 +191,14 @@ public class EnemyBase : Damageable
     protected IEnumerator AttackDelay()
     {
         //Debug.Log("Waiting to attack");
-        WaitForSeconds wait = new WaitForSeconds(attackDelay);
+        WaitForSeconds wait = new WaitForSeconds(type.attackDelay);
         yield return wait;
         canAttack = true;
     }
 
     protected IEnumerator MoveDelay()
     {
-        WaitForSeconds wait = new WaitForSeconds(moveDelay);
+        WaitForSeconds wait = new WaitForSeconds(type.moveDelay);
         yield return wait;
         moving = true;
         //Debug.Log($"Moving set {moving} by MoveDelay");
