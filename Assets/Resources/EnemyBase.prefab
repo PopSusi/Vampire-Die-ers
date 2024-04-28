@@ -166,29 +166,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff4d88a79b1dfc469a050edef7ed91b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteControls: {fileID: 0}
-  animControls: {fileID: 0}
-  myAnims: {fileID: 0}
-  attackDelay: 5
-  speed: 5
+  spriteControls: {fileID: 8117465261822443411}
+  animControls: {fileID: 6721970860528301688}
   HP: 50
   dead: 0
-  playerObj: {fileID: 0}
-  playerRef: {fileID: 0}
-  deathArea: {fileID: 0}
-  projectile: {fileID: 0}
-  projectileBased: 0
-  myType: 0
-  pollute: 0
-  moveDelay: 0
+  deathArea: {fileID: 8702034667130260200, guid: 23dba2176d7fcce4db060e23fbb6812d, type: 3}
+  projectile: {fileID: 6798077920432775670, guid: 195d57cc35611be44b295320289ef350, type: 3}
+  type: {fileID: 11400000, guid: 8717e919bf6a34c9db934588798a0620, type: 2}
   dirToPlayer: {x: 0, y: 0, z: 0}
-  dirToGoal: {x: 0, y: 0, z: 0}
-  closestToPlayer: 10
-  closeEnough: 0
-  moving: 0
-  avoidant: 0
-  rotator: 0
-  myName: 
 --- !u!50 &3563557276179700372
 Rigidbody2D:
   serializedVersion: 4

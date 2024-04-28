@@ -5,14 +5,13 @@ using UnityEngine;
 
 public class Projectiles : MonoBehaviour
 {
-    public GameObject playerObj;
     public Vector3 direction;
     public int damage;
     public float speed;
     // Start is called before the first frame update
     void Awake()
     {
-        direction = (playerObj.transform.position - transform.position).normalized;
+        direction = (PlayerController.instance.transform.position - transform.position).normalized;
         StartCoroutine("DeathTimer");
     }
 
@@ -32,7 +31,7 @@ public class Projectiles : MonoBehaviour
         //Debug.Log($"{other.gameObject.tag} on Layer {other.gameObject.layer}");
         if(other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerController>().TakeDamage(damage, Damageable.EDamage.Ranged);
+            PlayerController.instance.TakeDamage(damage, Damageable.EDamage.Ranged);
             Destroy(gameObject);
         }
     }

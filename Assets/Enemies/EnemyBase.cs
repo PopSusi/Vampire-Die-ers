@@ -23,7 +23,6 @@ public class EnemyBase : Damageable
     private bool moving; //Bool for if enemy can move, always opposite of closeEnough - Is own variable to override sometimes
     private bool rotApproach = true;
     public Attributes myAttributes;
-    public string myName;
 
     public delegate void DeathEvent();
     public event DeathEvent enemyDeath;
@@ -69,16 +68,18 @@ public class EnemyBase : Damageable
     
     void Start()
     {
-        myAttributes = new Attributes(type.projectileBased, type.pollute, type.avoidant, type.rotator, type.myType, name);
+        //myAttributes = new Attributes(type.projectileBased, type.pollute, type.avoidant, type.rotator, type.myType, type.enemyName);
         //DataSaver.instance.enemies.Add(this);
-        InitializeComponents(); //Set Animator and Sprite
+        //InitializeComponents(); //Set Animator and Sprite
         HP = 10;
         playerRef = PlayerController.instance; //Get Player Script
         playerObj = PlayerController.instance.gameObject;
         Attack(); //Start with Attack
         StartCoroutine("UpdateDistance"); //Starts recursive check for Direction and Distance
         PlayerController.instance.SubscribeToEnemyDeath(this);
+        animControls = GetComponent<Animator>();
         animControls.runtimeAnimatorController = type.animations;
+        spriteControls = GetComponent<SpriteRenderer>();
     }
     
 
@@ -218,7 +219,6 @@ public class EnemyBase : Damageable
     protected void Shoot()
     {
         GameObject myProj = Instantiate(projectile, this.transform.position, quaternion.identity);
-        projectile.GetComponent<Projectiles>().playerObj = playerObj;
         //Debug.Log("Shooting");
     }
 

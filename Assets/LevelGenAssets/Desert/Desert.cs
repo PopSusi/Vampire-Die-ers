@@ -8,8 +8,7 @@ public class Desert : LevelManager
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("Starting");
-        SpawnObstacles();
+        base.Start();
     }
 
     // Update is called once per frame

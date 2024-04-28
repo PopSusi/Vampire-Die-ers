@@ -47,7 +47,7 @@ public class Pollute : MonoBehaviour
             if (dealDamage)
             {
                 dealDamage = false;
-                other.gameObject.GetComponent<PlayerController>().TakeDamage(1, Damageable.EDamage.Magic);
+                PlayerController.instance.TakeDamage(1, Damageable.EDamage.Magic);
                 StartCoroutine("DamageDelay");
             }
         }

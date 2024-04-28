@@ -15,4 +15,5 @@ public class EnemyType: ScriptableObject
     public float speed;
     public float attackDelay;
     public AnimatorOverrideController animations;
+    public string enemyName;
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.InputSystem;
 
 public class PlayerController : Damageable
@@ -11,7 +12,7 @@ public class PlayerController : Damageable
     public static PlayerController instance;
     
     public Healthbar healthBar;
-    public Text scoreOut;
+    public TextMeshProUGUI scoreOut;
     public int scoreVal;
     
     [SerializeField] 
@@ -29,14 +30,14 @@ public class PlayerController : Damageable
 
     public delegate void XPUpdateEvent(int xp, int level);
     public event XPUpdateEvent XPUpdateUI;
+    
+
+    
 
     // Start is called before the first frame update
     private void Awake()
     {
-        if(instance == null)
-        {
             instance = this;
-        }
     }
     void Start()
     {
@@ -58,7 +59,6 @@ public class PlayerController : Damageable
         Vector2 moveVector = moveAction.ReadValue<Vector2>();
         Vector3 moveDir = new Vector3(moveAction.ReadValue<Vector2>().x, moveAction.ReadValue<Vector2>().y, 0);
         transform.Translate(moveDir * speed * Time.deltaTime, Space.Self);
-        
     }
 
     public override void InitializeComponents()
@@ -122,4 +122,6 @@ public class PlayerController : Damageable
         }
         XPUpdateUI?.Invoke(xp, level);
     }
+
+    
 }

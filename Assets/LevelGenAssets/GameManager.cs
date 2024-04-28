@@ -10,6 +10,8 @@ public class GameManager : Managers
     public GameObject pauseScreen;
     public GameObject Desert;
 
+    public const int EnemyCount = 4;
+
     private void Start()
     {
         SelectedLevel = LevelType.Desert;

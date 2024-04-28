@@ -44,14 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63913a3cba875b4ba6e8ef71a4d56d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObj: {fileID: 0}
-  playerRef: {fileID: 0}
   Enemies:
   - {fileID: 6316622526290719813, guid: 1d62256c824408c43a11ed81e206c268, type: 3}
+  - {fileID: 8866186259726994223, guid: 9625b85e6f2348f4a9361702e3b72973, type: 3}
+  - {fileID: 8866186259726994223, guid: 9625b85e6f2348f4a9361702e3b72973, type: 3}
   - {fileID: 8866186259726994223, guid: 9625b85e6f2348f4a9361702e3b72973, type: 3}
   Obstacles:
   - {fileID: 2515065090325380720, guid: a20a66a87a25cf24ebb2116dde948a28, type: 3}
   - {fileID: 7905569277805348998, guid: 7912691f0d8469b4bbd5e19b9c768e9d, type: 3}
   size: {x: 10, y: 10, z: 0}
-  surface: {fileID: 0}
+  timeText: {fileID: 0}
   myDens: 2
