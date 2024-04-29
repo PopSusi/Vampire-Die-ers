@@ -23,6 +23,9 @@ public class PlayerController : Damageable
     public float speed;
     private int xp;
     private int level;
+
+    public GameObject deathPanel;
+
     [SerializeField] private int XP
     {
         get { return xp; }
@@ -91,7 +94,8 @@ public class PlayerController : Damageable
     void OnMove(InputAction.CallbackContext context)
     {
         faceLeft = moveAction.ReadValue<Vector2>().x < 0 ; //If moving Left, faceLeft is false
-        spriteControls.flipX = faceLeft; 
+        spriteControls.flipX = faceLeft;
+        animControls.SetBool("Moving", true);
     }
     public void OnPause(InputAction.CallbackContext context)
     {
@@ -106,6 +110,7 @@ public class PlayerController : Damageable
     {
         healthBar.SetHealth((int)HP);
         //Debug.Log(HP);
+        animControls.SetTrigger("Hurt");
     }
 
     public void UpdateScore(int incoming)
@@ -139,5 +144,10 @@ public class PlayerController : Damageable
         XPUpdateUI?.Invoke(xp, level);
     }
 
-    
+    protected override void Die()
+    {
+        base.Die();
+        Time.timeScale = 0f;
+        deathPanel.SetActive(true);
+    }
 }

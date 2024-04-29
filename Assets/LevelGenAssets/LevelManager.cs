@@ -22,6 +22,8 @@ public class LevelManager : Managers
     EnemyType[] enemyTypes = new EnemyType[GameManager.EnemyCount];
     float bestTime = 0;
 
+    public GameObject winPanel;
+
     public Density myDens;
     protected void Awake()
     {
@@ -54,7 +56,8 @@ public class LevelManager : Managers
         timeUp += Time.fixedDeltaTime;
         if (timeDown == 0)
         {
-            //WIN GAME
+            Time.timeScale = 0.0f;
+            winPanel.SetActive(true);
         }
         UpdateTime();
     }
@@ -82,6 +85,7 @@ public class LevelManager : Managers
             SpawnEnemy();
         }
         yield return new WaitForSeconds(Random.Range(3f, 8f));
+        EnemyLoop();
 ;    }
 
     protected void SpawnEnemy()

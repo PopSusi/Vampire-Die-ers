@@ -11,11 +11,17 @@ public class GameManager : Managers
     public GameObject Desert;
 
     public const int EnemyCount = 4;
+    float time;
 
     private void Start()
     {
         SelectedLevel = LevelType.Desert;
-        //AddLevelManager();
+        AddLevelManager();
+    }
+
+    private void Update()
+    {
+        time += Time.deltaTime;
     }
 
     public void OnPause()
