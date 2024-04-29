@@ -22,3 +22,4 @@ MonoBehaviour:
   speed: 3
   attackDelay: 0.3
   animations: {fileID: 22100000, guid: f2eb5c454942f174cafdc6b089d84a45, type: 2}
+  enemyName: Rotater

@@ -33,23 +33,27 @@ public class LevelManager : Managers
         {
             Destroy(this);
         }
-        enemyTypes = Resources.LoadAll<EnemyType>("EnemyTypes");
-        Debug.Log(enemyTypes[2].enemyName);
+        
     }
 
     protected void FixedUpdate(){
         DistanceCheck();
         time -= Time.fixedDeltaTime;
+        if(time == 0)
+        {
+            //WIN GAME
+        }
         UpdateTime();
     }
     private void UpdateTime()
     {
         int mins = (int)(time / 60);
-        int secs = (int)(time / 60);
+        int secs = (int)(time % 60);
         string outString = mins.ToString(); //Minutes
         outString += ":";
         outString += secs.ToString(); //Seconds
         timeText.text = outString;
+
     }
     IEnumerator EnemyLoop()
     {
@@ -70,9 +74,10 @@ public class LevelManager : Managers
         GameObject enemyBasePrefab = Resources.Load<GameObject>("EnemyBase");
 
         GameObject enemy = Instantiate(enemyBasePrefab, spawnPos, Quaternion.identity);
+        enemyTypes = Resources.LoadAll<EnemyType>("EnemyTypes");
         EnemyType chosen = enemyTypes[Random.Range(0, GameManager.EnemyCount - 1)];
         enemy.GetComponent<EnemyBase>().type = chosen;
-        Debug.Log(chosen.enemyName);
+        Debug.Log("yay " + chosen);
     }
 
     protected void InitialSpawnObstacles()

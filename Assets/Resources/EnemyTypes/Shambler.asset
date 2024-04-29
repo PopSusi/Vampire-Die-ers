@@ -22,3 +22,4 @@ MonoBehaviour:
   speed: 2
   attackDelay: 0.5
   animations: {fileID: 22100000, guid: 5e457adca4f342f479bbc310414ba3a8, type: 2}
+  enemyName: Shambler
