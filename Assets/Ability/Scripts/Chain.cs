@@ -13,13 +13,15 @@ public class Chain : Abilities
     protected override float speedPerLevel { get { return .2f; } set { speedPerLevel = value; } }
     protected override float baseSpeed { get { return 1f; } set { baseSpeed = value; } }*/
     // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
+        StartCoroutine("Delay");
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator Delay()
     {
-        
+        yield return new WaitForSeconds(3 / type.speed);
+        anim.SetTrigger("Attack");
     }
 }
