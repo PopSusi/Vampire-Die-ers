@@ -93,7 +93,11 @@ public class PlayerController : Damageable
         faceLeft = moveAction.ReadValue<Vector2>().x < 0 ; //If moving Left, faceLeft is false
         spriteControls.flipX = faceLeft; 
     }
-    void OnPause(InputAction.CallbackContext context)
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        gm.OnPause();
+    }
+    public void Pause()
     {
         gm.OnPause();
     }

@@ -5,7 +5,7 @@ using TMPro;
 using Unity.AI.Navigation;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Progress;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class LevelManager : Managers
@@ -18,29 +18,40 @@ public class LevelManager : Managers
     public static List<GameObject> Terrain = new List<GameObject>();
     float timeDown = 1800;
     float timeUp = 0;
-    [SerializeField] TextMeshProUGUI timeText;
+    [SerializeField] TextMeshProUGUI timeText, bestText;
     EnemyType[] enemyTypes = new EnemyType[GameManager.EnemyCount];
+    float bestTime = 0;
 
     public Density myDens;
+    protected void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+        if (!PlayerPrefs.HasKey("BestTime"))
+        {
+            PlayerPrefs.SetFloat("BestTime", 0);
+        }
+        bestTime = PlayerPrefs.GetFloat("BestTime", 0);
+    }
     protected void Start()
     {
         StartCoroutine("Starting");
         InitialSpawnObstacles();
         StartCoroutine("EnemyLoop");
-        if (instance == null)
-        {
-            instance = this;
-        } else
-        {
-            Destroy(this);
-        }
+        
         
     }
 
     protected void FixedUpdate(){
         DistanceCheck();
         timeDown -= Time.fixedDeltaTime;
-        timeDown += Time.fixedDeltaTime;
+        timeUp += Time.fixedDeltaTime;
         if (timeDown == 0)
         {
             //WIN GAME
@@ -55,6 +66,13 @@ public class LevelManager : Managers
         outString += ":";
         outString += secs.ToString(); //Seconds
         timeText.text = outString;
+        if(timeUp > bestTime)
+        {
+            PlayerPrefs.GetFloat("BestTime", timeUp);
+            int minsTemp = (int)(timeUp / 60);
+            int secsTemp = (int)(timeUp % 60);
+            bestText.text = $"Highest time survived:\n{minsTemp}:{secsTemp}"; //Seconds
+        }
 
     }
     IEnumerator EnemyLoop()
@@ -143,5 +161,11 @@ public class LevelManager : Managers
                 SpawnNewTerrain(i);
             }
         }
+    }
+
+    public void Quit()
+    {
+        SceneManager.LoadScene("Start");
+        Time.timeScale = 1f;
     }
 }
