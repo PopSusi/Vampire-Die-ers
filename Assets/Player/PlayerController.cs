@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
+using System.Collections.Concurrent;
 
 public class PlayerController : Damageable
 {
@@ -32,8 +33,8 @@ public class PlayerController : Damageable
     public event XPUpdateEvent XPUpdateUI;
     
     public HashSet<Abilities.EAbility> AbilitiesSO = new HashSet<Abilities.EAbility>();
-    public Dictionary<Abilities.EAbility, GameObject> AtoGO =
-                       new Dictionary<Abilities.EAbility, GameObject>();
+    public ConcurrentDictionary<Abilities.EAbility, GameObject> AtoGO =
+                       new ConcurrentDictionary<Abilities.EAbility, GameObject>();
 
     // Start is called before the first frame update
     private void Awake()
@@ -46,9 +47,9 @@ public class PlayerController : Damageable
         {
             Destroy(this);
         }
-        AbilityType tempA = (AbilityType) Resources.Load("Abilities/AbilityTypes/Onion.asset");
+        AbilityType tempA = Resources.Load<AbilityType>("Abilities/AbilityTypes/Onion");
         AbilitiesSO.Add(tempA.ability);
-        AtoGO.Add(Abilities.EAbility.Onion, transform.GetChild(0).gameObject);
+        AtoGO.GetOrAdd(Abilities.EAbility.Onion, transform.GetChild(0).gameObject);
     }
     void Start()
     {

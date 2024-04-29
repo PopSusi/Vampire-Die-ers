@@ -77,7 +77,7 @@ public class LevelManager : Managers
         enemyTypes = Resources.LoadAll<EnemyType>("EnemyTypes");
         EnemyType chosen = enemyTypes[Random.Range(0, GameManager.EnemyCount - 1)];
         enemy.GetComponent<EnemyBase>().type = chosen;
-        Debug.Log("yay " + chosen);
+        //Debug.Log("yay " + chosen);
     }
 
     protected void InitialSpawnObstacles()
@@ -126,7 +126,7 @@ public class LevelManager : Managers
 
     private void DistanceCheck()
     {
-        Debug.Log(Terrain.Count);
+        //Debug.Log(Terrain.Count);
         var tempArray = Terrain.ToArray();
         foreach (GameObject GO in tempArray)
         {

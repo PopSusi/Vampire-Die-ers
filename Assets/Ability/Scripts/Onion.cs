@@ -19,7 +19,7 @@ public class Onion : Abilities
     // Update is called once per frame
     private void DamageBurst()
     {
-        Debug.Log("Burst");
+        //Debug.Log("Burst");
         Collider2D[] possibles = Physics2D.OverlapCircleAll(transform.position, transform.localScale.x, layerMask);
         foreach (Collider2D colliderCheck in possibles) {
             if (colliderCheck.gameObject.CompareTag("Enemy"))
@@ -39,7 +39,7 @@ public class Onion : Abilities
                 EnemiesHit.Add(collider.gameObject);
                 StartCoroutine(RemoveEnemyFromDelay(collider.gameObject));
             }
-            Debug.Log("Damage");
+            //Debug.Log("Damage");
         }
     }
 

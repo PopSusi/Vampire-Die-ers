@@ -19,7 +19,7 @@ public class LevelUpCanvas : MonoBehaviour
     {
         Instance();
         array = Resources.LoadAll<AbilityType>("Abilities/AbilityTypes");
-        Debug.Log(array.Length);
+        //Debug.Log(array.Length);
     }
     public void GenerateAbilities(int levelIn)
     {
@@ -44,6 +44,7 @@ public class LevelUpCanvas : MonoBehaviour
 
     private void LoadMenu(int levelIn)
     {
+        Time.timeScale = 0f;
         panel.gameObject.SetActive(true);
         option1 = array[0];
         option1Item.text = option1.ability.ToString();
@@ -67,70 +68,32 @@ public class LevelUpCanvas : MonoBehaviour
     private void ParseChildren(AbilityType ability)
     {
         PlayerController player = PlayerController.instance;
-        if (player.AbilitiesSO.Contains(ability.ability))
+        //Debug.Log(player.AtoGO.ContainsKey(ability.ability));
+        //Debug.Log(player.AtoGO.ContainsKey(Abilities.EAbility.Onion))
+        if (player.AtoGO.TryGetValue(ability.ability, out GameObject GOTemp))
         {
-            foreach (KeyValuePair<Abilities.EAbility, GameObject> child in player.AtoGO)
-            {
-                if(child.Key == ability.ability)
-                {
-                    //Instantiate
-                    child.Value.gameObject.GetComponent<Abilities>().levelOfAbility++;
-                    panel.gameObject.SetActive(false);
+            player.AtoGO.GetOrAdd(ability.ability, GOTemp);
+            GOTemp.GetComponent<Abilities>().levelOfAbility++;
+            panel.gameObject.SetActive(false);
 
-                    //Add to player collections
-                    player.AbilitiesSO.Add(ability.ability);
-                    return;
-                }
-            }
-            GameObject GO = Instantiate( ability.prefab, player.transform );
-            player.AtoGO.Add( ability.ability, GO );
+            //Add to player collections
+            player.AbilitiesSO.Add(ability.ability);
+
+            Debug.Log("LEVELED UP " + ability.ability.ToString());
+            Time.timeScale = 1f;
+            return;
         }
-
-        /*switch (ability.type.ability){
-            case Abilities.EAbility.Onion:
-                if(PlayerController.instance.transform.TryGetComponent<Onion>(out Onion onion))
-                {
-                    onion.levelOfAbility++;
-                } else
-                {
-                    Instantiate(Resources.Load<GameObject>("Abilities/Prefabs/Onion"),
-                        PlayerController.instance.gameObject.transform);
-                }
-                break;
-            case Abilities.EAbility.Chain:
-                if (PlayerController.instance.transform.TryGetComponent<Chain>(out Chain chain))
-                {
-                    chain.levelOfAbility++;
-                }
-                else
-                {
-                    Instantiate(Resources.Load<GameObject>("Abilities/Prefabs/Chain"),
-                        PlayerController.instance.gameObject.transform);
-                }
-                break;
-            case Abilities.EAbility.Necronomicon:
-                if (PlayerController.instance.transform.TryGetComponent<Necronomicon>(out Necronomicon necro))
-                {
-                    necro.levelOfAbility++;
-                }
-                else
-                {
-                    Instantiate(Resources.Load<GameObject>("Abilities/Prefabs/Necronomicon"),
-                        PlayerController.instance.gameObject.transform);
-                }
-                break;
-            default:
-                if (PlayerController.instance.transform.TryGetComponent<Onion>(out Onion defaultOnions))
-                {
-                    defaultOnions.levelOfAbility++;
-                }
-                else
-                {
-                    Instantiate(Resources.Load<GameObject>("Abilities/Prefabs/Onion"),
-                        PlayerController.instance.gameObject.transform);
-                }
-                break;
-        }*/
+        else
+        { 
+            //Instantiate
+            GameObject GO = Instantiate(ability.prefab, player.transform);
+            player.AtoGO.GetOrAdd(ability.ability, GO);
+            player.AtoGO.TryGetValue(ability.ability, out GO);
+            Debug.Log($"{GO.name} added from" +
+                $" {ability.prefab.name} base" +
+                $", initially {ability.ability}.");
+            Time.timeScale = 1f;
+        }
         
     }
 
