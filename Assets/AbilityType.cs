@@ -15,4 +15,5 @@ public class AbilityType : ScriptableObject
     public float baseSpeed;
     public Abilities.EAbility ability;
     public GameObject prefab;
+    public AnimatorOverrideController overrideController;
 }

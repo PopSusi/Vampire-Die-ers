@@ -13,6 +13,7 @@ public abstract class Abilities : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        anim.runtimeAnimatorController = type.overrideController;
     }
     void Start()
     {

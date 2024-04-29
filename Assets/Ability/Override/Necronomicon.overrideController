@@ -7,5 +7,5 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Necronomicon
-  m_Controller: {fileID: 9100000, guid: 5e6c7203dff3d4f4d91ee2a8311b0f9b, type: 2}
+  m_Controller: {fileID: 9100000, guid: ff72d425283f08a429ed719434e49c49, type: 2}
   m_Clips: []

@@ -20,4 +20,6 @@ MonoBehaviour:
   speed: 1
   speedPerLevel: 1
   baseSpeed: 1
-  ability: 0
+  ability: 1
+  prefab: {fileID: 2833034962126938545, guid: afd85bb304700bd4b9f018c9edcb4ddc, type: 3}
+  overrideController: {fileID: 22100000, guid: ec2ca1d9f959e4f04bfb34bf63a556ed, type: 2}
