@@ -16,7 +16,8 @@ public class LevelManager : Managers
     public static LevelManager instance;
     //Terrain Occlusion
     public static List<GameObject> Terrain = new List<GameObject>();
-    float time = 1800;
+    float timeDown = 1800;
+    float timeUp = 0;
     [SerializeField] TextMeshProUGUI timeText;
     EnemyType[] enemyTypes = new EnemyType[GameManager.EnemyCount];
 
@@ -38,8 +39,9 @@ public class LevelManager : Managers
 
     protected void FixedUpdate(){
         DistanceCheck();
-        time -= Time.fixedDeltaTime;
-        if(time == 0)
+        timeDown -= Time.fixedDeltaTime;
+        timeDown += Time.fixedDeltaTime;
+        if (timeDown == 0)
         {
             //WIN GAME
         }
@@ -47,8 +49,8 @@ public class LevelManager : Managers
     }
     private void UpdateTime()
     {
-        int mins = (int)(time / 60);
-        int secs = (int)(time % 60);
+        int mins = (int)(timeDown / 60);
+        int secs = (int)(timeDown % 60);
         string outString = mins.ToString(); //Minutes
         outString += ":";
         outString += secs.ToString(); //Seconds

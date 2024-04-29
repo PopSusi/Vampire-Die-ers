@@ -15,7 +15,7 @@ public class GameManager : Managers
     private void Start()
     {
         SelectedLevel = LevelType.Desert;
-        AddLevelManager();
+        //AddLevelManager();
     }
 
     public void OnPause()
