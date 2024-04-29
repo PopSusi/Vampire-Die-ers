@@ -69,13 +69,15 @@ public class LevelManager : Managers
         outString += ":";
         outString += secs.ToString(); //Seconds
         timeText.text = outString;
+        float outTime;
         if(timeUp > bestTime)
         {
-            PlayerPrefs.GetFloat("BestTime", timeUp);
-            int minsTemp = (int)(timeUp / 60);
-            int secsTemp = (int)(timeUp % 60);
-            bestText.text = $"Highest time survived:\n{minsTemp}:{secsTemp}"; //Seconds
+            PlayerPrefs.SetFloat("BestTime", timeUp);
         }
+        outTime = PlayerPrefs.GetFloat("BestTime", timeUp);
+        int minsTemp = (int)(timeUp / 60);
+        int secsTemp = (int)(timeUp % 60);
+        bestText.text = $"Highest time survived:\n{minsTemp}:{secsTemp}"; //Seconds
 
     }
     IEnumerator EnemyLoop()
