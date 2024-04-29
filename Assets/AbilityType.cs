@@ -14,4 +14,5 @@ public class AbilityType : ScriptableObject
     public float speedPerLevel;
     public float baseSpeed;
     public Abilities.EAbility ability;
+    public GameObject prefab;
 }

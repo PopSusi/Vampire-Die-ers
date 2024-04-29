@@ -1,27 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class LevelUpCanvas : MonoBehaviour
 {
-    Abilities option1, option2;
+    AbilityType option1, option2;
     [SerializeField] TextMeshProUGUI level, option1Item, option1Desc, option2Item, option2Desc;
     [SerializeField] Image panel;
     public static LevelUpCanvas instance;
-    HashSet<Abilities.EAbility> chosen = new HashSet<Abilities.EAbility>();
+    HashSet<AbilityType> chosen = new HashSet<AbilityType>();
+    AbilityType[] array;
     // Start is called before the first frame update
     void Awake()
     {
         Instance();
+        array = Resources.LoadAll<AbilityType>("Abilities/AbilityTypes");
+        Debug.Log(array.Length);
     }
     public void GenerateAbilities(int levelIn)
     {
-        System.Array A = System.Enum.GetValues(typeof(Abilities.EAbility));
-        while (chosen.Count < 2)
+        //Array A = Enum.GetValues(typeof(Abilities.EAbility));
+        
+        
+        while (chosen.Count < array.Length)
         {
-            Abilities.EAbility tempAbility = (Abilities.EAbility)A.GetValue(Random.Range(0, A.Length));
+            AbilityType tempAbility = array[(Random.Range(0, array.Length))];
             if (!chosen.Contains(tempAbility))
             {
                 chosen.Add(tempAbility);
@@ -38,61 +45,48 @@ public class LevelUpCanvas : MonoBehaviour
     private void LoadMenu(int levelIn)
     {
         panel.gameObject.SetActive(true);
-        Abilities[] array = EAbilityToArray();
         option1 = array[0];
-        option1Item.text = array[0].type.ability.ToString();
-        option1Desc.text = array[0].type.description;
+        option1Item.text = option1.ability.ToString();
+        option1Desc.text = option1.description;
         option2 = array[1];
-        option2Item.text = array[1].type.ability.ToString();
-        option2Desc.text = array[1].type.description;
+        option2Item.text = option2.ability.ToString();
+        option2Desc.text = option2.description;
         level.text = levelIn.ToString();
         gameObject.SetActive(true);
-    }
+    } 
 
-    private Abilities[] EAbilityToArray()
-    {
-        Abilities.EAbility[] tempArray = new Abilities.EAbility[2];
-        //Debug.Log(chosen.Count);
-        chosen.CopyTo(tempArray);
-        Abilities[] converted = new Abilities[2];
-        for(int i = 0 ; i < converted.Length; i++)
-        {
-            converted[i] = ParseLibrary(tempArray[i]);
-        }
-        return converted;
-    }
     public void Option1()
     {
-        ParseLibrary(option1);
+        ParseChildren(option1);
     }
 
     public void Option2()
     {
-        ParseLibrary(option2);
+        ParseChildren(option2);
     }
-
-    private Abilities ParseLibrary(Abilities.EAbility ability)
+    private void ParseChildren(AbilityType ability)
     {
-
-        switch (ability)
+        PlayerController player = PlayerController.instance;
+        if (player.AbilitiesSO.Contains(ability.ability))
         {
-            case Abilities.EAbility.Onion:
-                panel.gameObject.SetActive(false);
-                return new Onion();
-            case Abilities.EAbility.Chain:
-                panel.gameObject.SetActive(false);
-                return new Chain();
-            case Abilities.EAbility.Necronomicon:
-                panel.gameObject.SetActive(false);
-                return new Necronomicon();
-            default:
-                return new Onion();
+            foreach (KeyValuePair<Abilities.EAbility, GameObject> child in player.AtoGO)
+            {
+                if(child.Key == ability.ability)
+                {
+                    //Instantiate
+                    child.Value.gameObject.GetComponent<Abilities>().levelOfAbility++;
+                    panel.gameObject.SetActive(false);
+
+                    //Add to player collections
+                    player.AbilitiesSO.Add(ability.ability);
+                    return;
+                }
+            }
+            GameObject GO = Instantiate( ability.prefab, player.transform );
+            player.AtoGO.Add( ability.ability, GO );
         }
-    }
-    private void ParseLibrary(Abilities ability)
-    {
-        
-        switch (ability.type.ability){
+
+        /*switch (ability.type.ability){
             case Abilities.EAbility.Onion:
                 if(PlayerController.instance.transform.TryGetComponent<Onion>(out Onion onion))
                 {
@@ -136,8 +130,8 @@ public class LevelUpCanvas : MonoBehaviour
                         PlayerController.instance.gameObject.transform);
                 }
                 break;
-        }
-        panel.gameObject.SetActive(false);
+        }*/
+        
     }
 
 }

@@ -31,13 +31,24 @@ public class PlayerController : Damageable
     public delegate void XPUpdateEvent(int xp, int level);
     public event XPUpdateEvent XPUpdateUI;
     
-
-    
+    public HashSet<Abilities.EAbility> AbilitiesSO = new HashSet<Abilities.EAbility>();
+    public Dictionary<Abilities.EAbility, GameObject> AtoGO =
+                       new Dictionary<Abilities.EAbility, GameObject>();
 
     // Start is called before the first frame update
     private void Awake()
     {
-            instance = this;
+        if (instance == null)
+        {
+            instance= this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+        AbilityType tempA = (AbilityType) Resources.Load("Abilities/AbilityTypes/Onion.asset");
+        AbilitiesSO.Add(tempA.ability);
+        AtoGO.Add(Abilities.EAbility.Onion, transform.GetChild(0).gameObject);
     }
     void Start()
     {
