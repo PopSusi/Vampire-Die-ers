@@ -85,8 +85,8 @@ public class LevelManager : Managers
             SpawnEnemy();
         }
         yield return new WaitForSeconds(Random.Range(3f, 8f));
-        EnemyLoop();
-;    }
+        StartCoroutine("EnemyLoop");
+    }
 
     protected void SpawnEnemy()
     {
