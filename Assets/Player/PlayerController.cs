@@ -53,6 +53,8 @@ public class PlayerController : Damageable
         AbilityType tempA = Resources.Load<AbilityType>("Abilities/AbilityTypes/Onion");
         AbilitiesSO.Add(tempA.ability);
         AtoGO.GetOrAdd(Abilities.EAbility.Onion, transform.GetChild(0).gameObject);
+
+        EnemyBase.enemyDeath += XPFunc;
     }
     void Start()
     {
@@ -124,14 +126,15 @@ public class PlayerController : Damageable
         if(other.gameObject.CompareTag("Projectile"))
         {
             TakeDamage(other.gameObject.GetComponent<Projectiles>().damage, EDamage.Physical);
+            Debug.Log("Damage");
             Destroy(other.gameObject);
         }
     }
-    public void SubscribeToEnemyDeath(EnemyBase enemy)
+    /*public void SubscribeToEnemyDeath(EnemyBase enemy)
     {
         enemy.enemyDeath += XPFunc;
-    }
-    private void XPFunc()
+    }*/
+    public void XPFunc()
     {
         XP += 10;
         Debug.Log($"Gained 10 XP");

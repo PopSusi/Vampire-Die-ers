@@ -15,8 +15,8 @@ MonoBehaviour:
   description: A thick metal chain forged by the greated chainsmiths... is that really
     what we call them?
   intervalBetweenAttacks: 3
-  damagePerAttack: 2
-  damagePerLevel: 1
+  damagePerAttack: 5
+  damagePerLevel: 1.5
   speed: 1
   speedPerLevel: 1
   baseSpeed: 1

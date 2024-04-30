@@ -25,7 +25,7 @@ public class EnemyBase : Damageable
     public Attributes myAttributes;
 
     public delegate void DeathEvent();
-    public event DeathEvent enemyDeath;
+    public static event DeathEvent enemyDeath;
 
     private bool spawnedPollution;
     [System.Serializable] public struct Attributes {
@@ -76,7 +76,7 @@ public class EnemyBase : Damageable
         playerObj = PlayerController.instance.gameObject;
         Attack(); //Start with Attack
         StartCoroutine("UpdateDistance"); //Starts recursive check for Direction and Distance
-        PlayerController.instance.SubscribeToEnemyDeath(this);
+        //PlayerController.instance.SubscribeToEnemyDeath(this);
         animControls = GetComponent<Animator>();
         animControls.runtimeAnimatorController = type.animations;
         spriteControls = GetComponent<SpriteRenderer>();
@@ -224,7 +224,7 @@ public class EnemyBase : Damageable
 
     protected override void Die()
     {
-        enemyDeath?.Invoke();
+        PlayerController.instance.XPFunc();
         //Debug.Log("Supposed to be dead");
         if (myAttributes.pollute && spawnedPollution)
         {

@@ -15,8 +15,8 @@ MonoBehaviour:
   description: The Book of The Dead. What could be a better suited tool for killing
     the undead?
   intervalBetweenAttacks: -1
-  damagePerAttack: 3
-  damagePerLevel: 0.3
+  damagePerAttack: 4
+  damagePerLevel: 1
   speed: 1
   speedPerLevel: 2
   baseSpeed: 1
