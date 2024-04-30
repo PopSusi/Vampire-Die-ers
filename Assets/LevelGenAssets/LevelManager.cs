@@ -95,7 +95,7 @@ public class LevelManager : Managers
         float distance = Random.Range( 13, 25 );
         float angle = Random.Range( -Mathf.PI, Mathf.PI );
         Vector3 spawnPos = PlayerController.instance.gameObject.transform.position;
-        spawnPos += new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * distance;
+        spawnPos += new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * distance;
 
         GameObject enemyBasePrefab = Resources.Load<GameObject>("EnemyBase");
 

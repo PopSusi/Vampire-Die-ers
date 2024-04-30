@@ -22,7 +22,7 @@ public class PlayerController : Damageable
     private Vector2 moveAmount;
     public float speed;
     private int xp;
-    private int level;
+    private int level = 1;
 
     public GameObject deathPanel;
 
@@ -135,7 +135,8 @@ public class PlayerController : Damageable
     {
         XP += 10;
         Debug.Log($"Gained 10 XP");
-        if(xp > (20 * level ^ 2))
+        int req = CalcReq();
+        if (xp > 50 * level)
         {
             level++;
             LevelUpCanvas.instance.GenerateAbilities(level);
@@ -150,4 +151,5 @@ public class PlayerController : Damageable
         Time.timeScale = 0f;
         deathPanel.SetActive(true);
     }
+    int CalcReq() => 20 * (level ^ 2);
 }
