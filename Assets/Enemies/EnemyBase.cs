@@ -80,6 +80,7 @@ public class EnemyBase : Damageable
         animControls = GetComponent<Animator>();
         animControls.runtimeAnimatorController = type.animations;
         spriteControls = GetComponent<SpriteRenderer>();
+        spriteControls.sprite = type.defaultSprite;
     }
     
 

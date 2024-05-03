@@ -23,3 +23,4 @@ MonoBehaviour:
   attackDelay: 0.5
   animations: {fileID: 22100000, guid: 5e457adca4f342f479bbc310414ba3a8, type: 2}
   enemyName: Shambler
+  defaultSprite: {fileID: -590108858, guid: 731084b566366f64d95b63996d5f081c, type: 3}

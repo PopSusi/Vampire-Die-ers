@@ -23,3 +23,4 @@ MonoBehaviour:
   attackDelay: 4
   animations: {fileID: 22100000, guid: 9b13b4ce1841d9344ac7fec7523b63ea, type: 2}
   enemyName: Avoider
+  defaultSprite: {fileID: 1733752980, guid: 01c17483aa84cb947968de944ee5770d, type: 3}

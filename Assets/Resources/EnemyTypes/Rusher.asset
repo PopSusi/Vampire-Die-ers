@@ -23,3 +23,4 @@ MonoBehaviour:
   attackDelay: 1
   animations: {fileID: 22100000, guid: 56c68260bbce0064bacacdcc5fc65801, type: 2}
   enemyName: Rusher
+  defaultSprite: {fileID: -71988905, guid: 29c6c62cc26f20542b30f6f7391a3b5e, type: 3}

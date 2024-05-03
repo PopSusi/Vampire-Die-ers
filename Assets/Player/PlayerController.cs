@@ -125,9 +125,13 @@ public class PlayerController : Damageable
     {
         if(other.gameObject.CompareTag("Projectile"))
         {
-            TakeDamage(other.gameObject.GetComponent<Projectiles>().damage, EDamage.Physical);
+            TakeDamage(other.gameObject.GetComponent<Projectiles>().damage, EDamage.Magic);
             Debug.Log("Damage");
             Destroy(other.gameObject);
+        } else if (other.gameObject.CompareTag("Enemy"))
+        {
+            TakeDamage(1, EDamage.Physical);
+            Debug.Log("Damage");
         }
     }
     /*public void SubscribeToEnemyDeath(EnemyBase enemy)

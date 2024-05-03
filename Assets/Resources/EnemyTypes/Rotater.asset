@@ -23,3 +23,4 @@ MonoBehaviour:
   attackDelay: 0.3
   animations: {fileID: 22100000, guid: f2eb5c454942f174cafdc6b089d84a45, type: 2}
   enemyName: Rotater
+  defaultSprite: {fileID: -691583482, guid: dc82cbada487b70479e5c3a059ac30e8, type: 3}
